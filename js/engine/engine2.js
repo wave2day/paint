@@ -1,6 +1,6 @@
 import { FM } from "./FM.js";
 
-export class Engine2 {
+export class engine2 {
   constructor(baseEngine) {
     this.base = baseEngine;
 
