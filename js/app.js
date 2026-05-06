@@ -7,13 +7,13 @@ const canvas = document.getElementById("canvas");
 // 🔥 HLAVNÍ (funkční) engine
 const engine = new Engine(canvas);
 
-// 🔥 NOVÝ systém modulů (zatím bokem)
+// 🔥 NOVÝ systém modulů
 const engine2 = new Engine2(engine);
 
-// 🔥 UI používá starý engine (kvůli load, scroll, atd.)
+// 🔥 UI
 const ui = new UI(engine);
 
-// 🔥 ale připojíme i nový engine
+// 🔥 připojení FM systému
 ui.engine2 = engine2;
 
 ui.init();
