@@ -1,5 +1,5 @@
 import { Engine } from "./engine.js";
-import { Engine2 } from "./engine/Engine2.js";
+import { Engine2 } from "./engine/engine2.js";
 import { UI } from "./ui.js";
 
 const canvas = document.getElementById("canvas");
