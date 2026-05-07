@@ -21,8 +21,12 @@ const ui = new UI(engine);
 ui.engine2 = engine2;
 
 // 🔥 INSERT DRIFT PANEL
-document.querySelector(".tool-options").innerHTML =
-  createDriftPanel();
+document
+  .querySelector(".tool-options")
+  .insertAdjacentHTML(
+    "afterbegin",
+    createDriftPanel()
+  );
 
 // 🔥 INIT UI
 ui.init();
