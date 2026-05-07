@@ -1,12 +1,21 @@
 import { FM } from "./FM.js";
+import { DriftEngine } from "./DriftEngine.js";
 
 export class Engine2 {
-  constructor(baseEngine) {
-    this.base = baseEngine;
 
-    this.fm = new FM();
+  constructor(base) {
+
+    this.base = base;
+
+    this.fm =
+      new FM();
+
+    this.drift =
+      new DriftEngine();
 
     this.modules = {
+
+      drift: this.drift,
       fm: this.fm
     };
 
@@ -14,11 +23,17 @@ export class Engine2 {
   }
 
   draw(progress) {
-    if (this.mode === "fm") {
-      this.fm.draw(this.base);
+
+    const module =
+      this.modules[this.mode];
+
+    if (!module) {
       return;
     }
 
-    this.base.draw(progress);
+    module.draw(
+      this.base,
+      progress
+    );
   }
 }
