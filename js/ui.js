@@ -151,7 +151,7 @@ export class UI {
           panel.classList.add("active");
         }
 
-        this.engine.draw(this.progress);
+        this.engine2.draw(this.progress);
       };
     });
   }
@@ -211,7 +211,7 @@ export class UI {
 
     } else {
 
-      this.engine.draw(this.progress);
+      this.engine2.draw(this.progress);
     }
 
     this.raf =
@@ -504,7 +504,7 @@ export class UI {
     if (hue) {
 
       hue.oninput = () => {
-        this.engine.draw(this.progress);
+        this.engine2.draw(this.progress);
       };
     }
 
