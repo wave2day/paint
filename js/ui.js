@@ -202,17 +202,7 @@ export class UI {
       this.progress = 0;
     }
 
-    if (
-      this.engine2 &&
-      this.engine2.mode === "fm"
-    ) {
-
-      this.engine2.draw(this.progress);
-
-    } else {
-
-      this.engine2.draw(this.progress);
-    }
+this.engine2.draw(this.progress);
 
     this.raf =
       requestAnimationFrame(() => {
