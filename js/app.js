@@ -4,6 +4,8 @@ import { UI } from "./ui.js";
 
 import { buildPalette } from "./palette/palette.js";
 
+import { createDriftPanel } from "./effects/drift/driftPanel.js";
+
 const canvas = document.getElementById("canvas");
 
 // 🔥 MAIN ENGINE
@@ -17,6 +19,10 @@ const ui = new UI(engine);
 
 // 🔥 CONNECT FM
 ui.engine2 = engine2;
+
+// 🔥 INSERT DRIFT PANEL
+document.querySelector(".tool-options").innerHTML =
+  createDriftPanel();
 
 // 🔥 INIT UI
 ui.init();
