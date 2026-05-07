@@ -616,19 +616,30 @@ resetScrollbars() {
     const valueMap =
       new WeakMap();
 
-    document
-      .querySelectorAll(".knob")
-      .forEach(knob => {
+document
+  .querySelectorAll(".knob")
+  .forEach(knob => {
 
-        valueMap.set(knob, 0);
+    const initial =
+      parseFloat(knob.dataset.value || "0.5");
 
-        knob.addEventListener("mousedown", (e) => {
+    valueMap.set(knob, initial);
 
-          activeKnob = knob;
+    const dial =
+      knob.querySelector(".dial");
 
-          e.preventDefault();
-        });
-      });
+    if (dial) {
+      dial.style.transform =
+        `rotate(${initial * 270 - 135}deg)`;
+    }
+
+    knob.addEventListener("mousedown", (e) => {
+
+      activeKnob = knob;
+
+      e.preventDefault();
+    });
+  });
 
     window.addEventListener("mouseup", () => {
       activeKnob = null;
