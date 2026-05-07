@@ -427,10 +427,89 @@ this.engine2.draw(this.progress);
         `translateY(${this.scrollPosY}px)`;
     };
 
-    this.updateScrollbars();
+this.updateScrollbars();
+
+scrollX.addEventListener("mousedown", () => {
+  this.draggingX = true;
+});
+
+scrollY.addEventListener("mousedown", () => {
+  this.draggingY = true;
+});
+
+window.addEventListener("mousemove", (e) => {
+
+  const viewW = viewport.clientWidth;
+  const viewH = viewport.clientHeight;
+
+  const overflowX =
+    Math.max(0, this.engine.drawW - viewW);
+
+  const overflowY =
+    Math.max(0, this.engine.drawH - viewH);
+
+  if (this.draggingX && overflowX > 0) {
+
+    const max =
+      trackX.clientWidth - scrollX.clientWidth;
+
+    this.scrollPosX += e.movementX;
+
+    this.scrollPosX =
+      Math.max(
+        0,
+        Math.min(max, this.scrollPosX)
+      );
+
+    scrollX.style.transform =
+      `translateX(${this.scrollPosX}px)`;
+
+    const ratio =
+      this.scrollPosX / max;
+
+    this.engine.offsetX =
+      -(overflowX * ratio);
+
+    this.engine2.draw(this.progress);
   }
 
-  resetScrollbars() {
+  if (this.draggingY && overflowY > 0) {
+
+    const max =
+      trackY.clientHeight - scrollY.clientHeight;
+
+    this.scrollPosY += e.movementY;
+
+    this.scrollPosY =
+      Math.max(
+        0,
+        Math.min(max, this.scrollPosY)
+      );
+
+    scrollY.style.transform =
+      `translateY(${this.scrollPosY}px)`;
+
+    const ratio =
+      this.scrollPosY / max;
+
+    this.engine.offsetY =
+      -(overflowY * ratio);
+
+    this.engine2.draw(this.progress);
+  }
+
+});
+
+window.addEventListener("mouseup", () => {
+
+  this.draggingX = false;
+  this.draggingY = false;
+
+});
+
+}
+
+resetScrollbars() {
 
     this.scrollPosX = 0;
     this.scrollPosY = 0;
