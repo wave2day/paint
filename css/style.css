@@ -439,3 +439,78 @@ canvas {
   border-right: 2px solid #fff;
   border-bottom: 2px solid #fff;
 }
+/* =========================
+   TOOL GRID
+========================= */
+
+.tool-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:3px;
+}
+
+/* =========================
+   TOOL BUTTONS
+========================= */
+
+.tool-cell{
+  position:relative;
+
+  width:100%;
+  aspect-ratio:1 / 1;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+
+  background:#d4d0c8;
+  border:1px solid #808080;
+
+  cursor:pointer;
+}
+
+.tool-cell.active{
+  background:#bdb8ad;
+  box-shadow:
+    inset 1px 1px 0 #444,
+    inset -1px -1px 0 #fff;
+}
+
+/* =========================
+   TOOL ICONS
+========================= */
+
+.tool-icon{
+  width:70%;
+  height:70%;
+
+  object-fit:contain;
+
+  pointer-events:none;
+
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+/* =========================
+   PALETTE
+========================= */
+
+.swatches{
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:4px;
+}
+
+.swatches i{
+  width:22px;
+  height:22px;
+
+  border-radius:50%;
+
+  cursor:pointer;
+
+  border:1px solid rgba(0,0,0,0.3);
+}
