@@ -5,6 +5,7 @@ import { UI } from "./ui.js";
 import { buildPalette } from "./palette/palette.js";
 
 import { createDriftPanel } from "./effects/drift/driftPanel.js";
+import { createFMPanel } from "./effects/fm/fmPanel.js";
 
 const canvas = document.getElementById("canvas");
 
@@ -20,13 +21,10 @@ const ui = new UI(engine);
 // 🔥 CONNECT FM
 ui.engine2 = engine2;
 
-// 🔥 INSERT DRIFT PANEL
-document
-  .querySelector(".tool-options")
-  .insertAdjacentHTML(
-    "afterbegin",
-    createDriftPanel()
-  );
+// 🔥 INSERT PANELS
+document.querySelector(".tool-options").innerHTML =
+  createDriftPanel() +
+  createFMPanel();
 
 // 🔥 INIT UI
 ui.init();
