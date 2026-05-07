@@ -2,18 +2,24 @@ import { Engine } from "./engine.js";
 import { Engine2 } from "./engine/engine2.js";
 import { UI } from "./ui.js";
 
+import { buildPalette } from "./palette/palette.js";
+
 const canvas = document.getElementById("canvas");
 
-// 🔥 HLAVNÍ (funkční) engine
+// 🔥 MAIN ENGINE
 const engine = new Engine(canvas);
 
-// 🔥 NOVÝ systém modulů
+// 🔥 EFFECT ROUTER
 const engine2 = new Engine2(engine);
 
 // 🔥 UI
 const ui = new UI(engine);
 
-// 🔥 připojení FM systému
+// 🔥 CONNECT FM
 ui.engine2 = engine2;
 
+// 🔥 INIT UI
 ui.init();
+
+// 🔥 BUILD PALETTE
+buildPalette(engine);
