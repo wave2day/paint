@@ -659,7 +659,7 @@ document
         Math.max(0, Math.min(1, value));
 
       valueMap.set(activeKnob, value);
-
+      activeKnob.dataset.value = value;
       const dial =
         activeKnob.querySelector(".dial");
 
