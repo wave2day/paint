@@ -1,4 +1,3 @@
-```js
 export class UI {
 
   constructor(engine) {
@@ -43,6 +42,8 @@ export class UI {
     const pickBtn =
       document.getElementById("pickBtn");
 
+    if (!upload || !pickBtn) return;
+
     pickBtn.onclick = () => {
       upload.click();
     };
@@ -67,7 +68,10 @@ export class UI {
           this.progress = 0;
 
           this.resetScrollbars();
-          this.updateScrollbars();
+
+          if (this.updateScrollbars) {
+            this.updateScrollbars();
+          }
 
           if (this.engine2) {
             this.engine2.mode = "drift";
@@ -81,7 +85,6 @@ export class UI {
 
   bindTools() {
 
-    // 🔥 DEFAULT PANEL STATE
     const driftPanel =
       document.querySelector('[data-panel="drift"]');
 
@@ -111,17 +114,17 @@ export class UI {
 
         const tool = btn.dataset.tool;
 
-        // 🔥 HIDE ALL PANELS
         document
           .querySelectorAll(".panel")
           .forEach(panel => {
             panel.classList.remove("active");
           });
 
-        // 🔥 FM
         if (tool === "fm") {
 
-          this.engine2.mode = "fm";
+          if (this.engine2) {
+            this.engine2.mode = "fm";
+          }
 
           const panel =
             document.querySelector('[data-panel="fm"]');
@@ -130,13 +133,16 @@ export class UI {
             panel.classList.add("active");
           }
 
-          this.engine2.draw(this.progress);
+          if (this.engine2) {
+            this.engine2.draw(this.progress);
+          }
 
           return;
         }
 
-        // 🔥 DRIFT
-        this.engine2.mode = "drift";
+        if (this.engine2) {
+          this.engine2.mode = "drift";
+        }
 
         const panel =
           document.querySelector('[data-panel="drift"]');
@@ -264,7 +270,8 @@ export class UI {
         link.href =
           URL.createObjectURL(blob);
 
-        link.download = "export.webm";
+        link.download =
+          "export.webm";
 
         link.click();
       };
@@ -318,6 +325,16 @@ export class UI {
     const viewport =
       document.querySelector(".canvas-area");
 
+    if (
+      !scrollX ||
+      !scrollY ||
+      !trackX ||
+      !trackY ||
+      !viewport
+    ) {
+      return;
+    }
+
     this.updateScrollbars = () => {
 
       const viewW = viewport.clientWidth;
@@ -349,8 +366,11 @@ export class UI {
       const overflowY =
         Math.max(0, contentH - viewH);
 
-      const trackW = trackX.clientWidth;
-      const trackH = trackY.clientHeight;
+      const trackW =
+        trackX.clientWidth;
+
+      const trackH =
+        trackY.clientHeight;
 
       const minSize = 20;
 
@@ -431,6 +451,8 @@ export class UI {
 
     const dragbar =
       document.getElementById("dragbar");
+
+    if (!win || !dragbar) return;
 
     dragbar.addEventListener("mousedown", (e) => {
 
@@ -597,4 +619,3 @@ export class UI {
     });
   }
 }
-```
