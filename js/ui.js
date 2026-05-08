@@ -4,6 +4,10 @@ import { bindScrollbars }
   from "./ui/scrollbars.js";
 import { bindLoad }
   from "./ui/loadUI.js";
+import {
+  bindTransport,
+  stopTransport
+} from "./ui/transport.js";
 
 
 export class UI {
@@ -32,7 +36,7 @@ export class UI {
 
     bindLoad(this);
     this.bindTools();
-    this.bindStartStop();
+    bindTransport(this);
     this.bindExport();
     this.bindPalette();
     bindScrollbars(this);
@@ -116,68 +120,6 @@ export class UI {
     });
   }
 
-  bindStartStop() {
-
-    const start =
-      document.getElementById("start");
-
-    const stop =
-      document.getElementById("stop");
-
-    const speed =
-      document.getElementById("speed");
-
-    if (!start || !stop || !speed) return;
-
-    start.onclick = () => {
-
-      if (!this.engine.images.length) {
-        return;
-      }
-
-      if (this.running) {
-        return;
-      }
-
-      this.running = true;
-
-      this.loop(speed);
-    };
-
-    stop.onclick = () => {
-      this.stop();
-    };
-  }
-
-  loop(speedEl) {
-
-    if (!this.running) return;
-
-    const speed =
-      parseFloat(speedEl.value);
-
-    this.progress += speed;
-
-    if (this.progress > 1) {
-      this.progress = 0;
-    }
-
-this.engine2.draw(this.progress);
-
-    this.raf =
-      requestAnimationFrame(() => {
-        this.loop(speedEl);
-      });
-  }
-
-  stop() {
-
-    this.running = false;
-
-    if (this.raf) {
-      cancelAnimationFrame(this.raf);
-    }
-  }
 
   bindExport() {
 
