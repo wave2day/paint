@@ -14,7 +14,8 @@ import { bindExport }
   from "./ui/exportUI.js";
 import { bindTools }
   from "./ui/toolsUI.js";
-
+import { bindInputs }
+  from "./ui/inputsUI.js";
 
 export class UI {
 
@@ -47,7 +48,7 @@ export class UI {
     bindPalette(this);
     bindScrollbars(this);
     bindWindowDrag(this);
-    this.bindInputs();
+    bindInputs(this);
 
     this.engine.clear();
   }
@@ -61,49 +62,7 @@ resetScrollbars() {
   }
 
 
-  bindInputs() {
 
-    const hue =
-      document.getElementById("hueBias");
-
-    if (hue) {
-
-      hue.oninput = () => {
-        this.engine2.draw(this.progress);
-      };
-    }
-
-    const fmThreshold =
-      document.getElementById("fmThreshold");
-
-    if (fmThreshold) {
-
-      fmThreshold.oninput = () => {
-
-        if (!this.engine2?.fm) return;
-
-        this.engine2.fm.threshold =
-          parseFloat(fmThreshold.value);
-
-        this.engine2.draw(this.progress);
-      };
-    }
-
-    const fmSmooth =
-      document.getElementById("fmSmooth");
-
-    if (fmSmooth) {
-
-      fmSmooth.oninput = () => {
-
-        if (!this.engine2?.fm) return;
-
-        this.engine2.fm.smooth =
-          parseFloat(fmSmooth.value);
-
-        this.engine2.draw(this.progress);
-      };
-    }
 
     let activeKnob = null;
 
