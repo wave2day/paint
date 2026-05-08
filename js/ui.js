@@ -1,12 +1,12 @@
-export class UI {
-
-  import { bindWindowDrag }
+import { bindWindowDrag }
   from "./ui/windowDrag.js";
+
+export class UI {
 
   constructor(engine) {
 
     this.engine = engine;
-
+    
     this.running = false;
     this.raf = null;
 
