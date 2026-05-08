@@ -1,5 +1,7 @@
 import { bindWindowDrag }
   from "./ui/windowDrag.js";
+import { bindScrollbars }
+  from "./ui/scrollbars.js";
 
 export class UI {
 
@@ -30,7 +32,7 @@ export class UI {
     this.bindStartStop();
     this.bindExport();
     this.bindPalette();
-    this.bindScrollbars();
+    bindScrollbars(this);
     bindWindowDrag(this);
     this.bindInputs();
 
@@ -308,32 +310,7 @@ this.engine2.draw(this.progress);
       });
   }
 
-  bindScrollbars() {
 
-    const scrollX =
-      document.querySelector(".scroll-x span");
-
-    const scrollY =
-      document.querySelector(".scroll-y span");
-
-    const trackX =
-      document.querySelector(".scroll-x");
-
-    const trackY =
-      document.querySelector(".scroll-y");
-
-    const viewport =
-      document.querySelector(".canvas-area");
-
-    if (
-      !scrollX ||
-      !scrollY ||
-      !trackX ||
-      !trackY ||
-      !viewport
-    ) {
-      return;
-    }
 
     this.updateScrollbars = () => {
 
