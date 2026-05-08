@@ -8,7 +8,8 @@ import {
   bindTransport,
   stopTransport
 } from "./ui/transport.js";
-
+import { bindPalette }
+  from "./ui/paletteUI.js";
 
 export class UI {
 
@@ -38,7 +39,7 @@ export class UI {
     this.bindTools();
     bindTransport(this);
     this.bindExport();
-    this.bindPalette();
+    bindPalette(this);
     bindScrollbars(this);
     bindWindowDrag(this);
     this.bindInputs();
@@ -176,34 +177,7 @@ export class UI {
     };
   }
 
-  bindPalette() {
 
-    document
-      .querySelectorAll(".swatches i")
-      .forEach(swatch => {
-
-        swatch.onclick = () => {
-
-          const color =
-            getComputedStyle(swatch).backgroundColor;
-
-          document
-            .querySelectorAll(".swatches i")
-            .forEach(s => {
-              s.classList.remove("active");
-            });
-
-          swatch.classList.add("active");
-
-          if (
-  this.engine2 &&
-  this.engine2.mode === "drift"
-) {
-  this.engine.setBackground(color);
-}
-        };
-      });
-  }
 
 
 resetScrollbars() {
