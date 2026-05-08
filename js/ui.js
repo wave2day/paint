@@ -2,6 +2,9 @@ import { bindWindowDrag }
   from "./ui/windowDrag.js";
 import { bindScrollbars }
   from "./ui/scrollbars.js";
+import { bindLoad }
+  from "./ui/loadUI.js";
+
 
 export class UI {
 
@@ -27,7 +30,7 @@ export class UI {
 
   init() {
 
-    this.bindLoad();
+    bindLoad(this);
     this.bindTools();
     this.bindStartStop();
     this.bindExport();
@@ -39,56 +42,6 @@ export class UI {
     this.engine.clear();
   }
 
-  bindLoad() {
-
-    const upload =
-      document.getElementById("upload");
-
-    const pickBtn =
-      document.getElementById("pickBtn");
-
-    if (!upload || !pickBtn) return;
-
-    pickBtn.onclick = () => {
-      upload.click();
-    };
-
-    upload.onchange = (e) => {
-
-      this.stop();
-
-      this.progress = 0;
-
-      this.scrollPosX = 0;
-      this.scrollPosY = 0;
-
-      this.engine.load(
-
-        e.target.files,
-
-        () => {},
-
-        () => {
-
-          this.progress = 0;
-
-          this.resetScrollbars();
-
-          if (this.updateScrollbars) {
-            this.updateScrollbars();
-          }
-
-          if (this.engine2) {
-            this.engine2.mode = "drift";
-          }
-
-          if (this.engine2) {
-  this.engine2.draw(0);
-}
-        }
-      );
-    };
-  }
 
   bindTools() {
 
@@ -310,189 +263,6 @@ this.engine2.draw(this.progress);
       });
   }
 
-
-
-    this.updateScrollbars = () => {
-
-      const viewW = viewport.clientWidth;
-      const viewH = viewport.clientHeight;
-
-      const contentW = this.engine.drawW;
-      const contentH = this.engine.drawH;
-
-      trackX.style.display = "block";
-      trackY.style.display = "block";
-
-      if (!contentW || !contentH) {
-
-        scrollX.style.width = "60px";
-        scrollY.style.height = "60px";
-
-        scrollX.style.transform =
-          "translateX(0px)";
-
-        scrollY.style.transform =
-          "translateY(0px)";
-
-        return;
-      }
-
-      const overflowX =
-        Math.max(0, contentW - viewW);
-
-      const overflowY =
-        Math.max(0, contentH - viewH);
-
-      const trackW =
-        trackX.clientWidth;
-
-      const trackH =
-        trackY.clientHeight;
-
-      const minSize = 20;
-
-      const thumbW =
-        overflowX > 0
-          ? Math.max(
-              minSize,
-              (viewW / contentW) * trackW
-            )
-          : trackW;
-
-      const thumbH =
-        overflowY > 0
-          ? Math.max(
-              minSize,
-              (viewH / contentH) * trackH
-            )
-          : trackH;
-
-      scrollX.style.width =
-        thumbW + "px";
-
-      scrollY.style.height =
-        thumbH + "px";
-
-      if (overflowX > 0) {
-
-        const maxX =
-          trackW - thumbW;
-
-        const ratioX =
-          -this.engine.offsetX / overflowX;
-
-        this.scrollPosX =
-          ratioX * maxX;
-
-      } else {
-
-        this.scrollPosX = 0;
-      }
-
-      if (overflowY > 0) {
-
-        const maxY =
-          trackH - thumbH;
-
-        const ratioY =
-          -this.engine.offsetY / overflowY;
-
-        this.scrollPosY =
-          ratioY * maxY;
-
-      } else {
-
-        this.scrollPosY = 0;
-      }
-
-      scrollX.style.transform =
-        `translateX(${this.scrollPosX}px)`;
-
-      scrollY.style.transform =
-        `translateY(${this.scrollPosY}px)`;
-    };
-
-this.updateScrollbars();
-
-scrollX.addEventListener("mousedown", () => {
-  this.draggingX = true;
-});
-
-scrollY.addEventListener("mousedown", () => {
-  this.draggingY = true;
-});
-
-window.addEventListener("mousemove", (e) => {
-
-  const viewW = viewport.clientWidth;
-  const viewH = viewport.clientHeight;
-
-  const overflowX =
-    Math.max(0, this.engine.drawW - viewW);
-
-  const overflowY =
-    Math.max(0, this.engine.drawH - viewH);
-
-  if (this.draggingX && overflowX > 0) {
-
-    const max =
-      trackX.clientWidth - scrollX.clientWidth;
-
-    this.scrollPosX += e.movementX;
-
-    this.scrollPosX =
-      Math.max(
-        0,
-        Math.min(max, this.scrollPosX)
-      );
-
-    scrollX.style.transform =
-      `translateX(${this.scrollPosX}px)`;
-
-    const ratio =
-      this.scrollPosX / max;
-
-    this.engine.offsetX =
-      -(overflowX * ratio);
-
-    this.engine2.draw(this.progress);
-  }
-
-  if (this.draggingY && overflowY > 0) {
-
-    const max =
-      trackY.clientHeight - scrollY.clientHeight;
-
-    this.scrollPosY += e.movementY;
-
-    this.scrollPosY =
-      Math.max(
-        0,
-        Math.min(max, this.scrollPosY)
-      );
-
-    scrollY.style.transform =
-      `translateY(${this.scrollPosY}px)`;
-
-    const ratio =
-      this.scrollPosY / max;
-
-    this.engine.offsetY =
-      -(overflowY * ratio);
-
-    this.engine2.draw(this.progress);
-  }
-
-});
-
-window.addEventListener("mouseup", () => {
-
-  this.draggingX = false;
-  this.draggingY = false;
-
-});
-
-}
 
 resetScrollbars() {
 
