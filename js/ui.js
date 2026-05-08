@@ -295,7 +295,12 @@ this.engine2.draw(this.progress);
 
           swatch.classList.add("active");
 
-          this.engine.setBackground(color);
+          if (
+  this.engine2 &&
+  this.engine2.mode === "drift"
+) {
+  this.engine.setBackground(color);
+}
         };
       });
   }
