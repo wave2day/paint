@@ -1,5 +1,8 @@
 export class UI {
 
+  import { bindWindowDrag }
+  from "./ui/windowDrag.js";
+
   constructor(engine) {
 
     this.engine = engine;
@@ -28,7 +31,7 @@ export class UI {
     this.bindExport();
     this.bindPalette();
     this.bindScrollbars();
-    this.bindWindowDrag();
+    bindWindowDrag(this);
     this.bindInputs();
 
     this.engine.clear();
@@ -520,57 +523,6 @@ resetScrollbars() {
     this.scrollPosY = 0;
   }
 
-  bindWindowDrag() {
-
-    const win =
-      document.getElementById("window");
-
-    const dragbar =
-      document.getElementById("dragbar");
-
-    if (!win || !dragbar) return;
-
-    dragbar.addEventListener("mousedown", (e) => {
-
-      this.draggingWindow = true;
-
-      const rect =
-        win.getBoundingClientRect();
-
-      this.winOffsetX =
-        e.clientX - rect.left;
-
-      this.winOffsetY =
-        e.clientY - rect.top;
-
-      win.style.position = "fixed";
-
-      win.style.left =
-        rect.left + "px";
-
-      win.style.top =
-        rect.top + "px";
-
-      e.preventDefault();
-    });
-
-    window.addEventListener("mousemove", (e) => {
-
-      if (!this.draggingWindow) {
-        return;
-      }
-
-      win.style.left =
-        (e.clientX - this.winOffsetX) + "px";
-
-      win.style.top =
-        (e.clientY - this.winOffsetY) + "px";
-    });
-
-    window.addEventListener("mouseup", () => {
-      this.draggingWindow = false;
-    });
-  }
 
   bindInputs() {
 
