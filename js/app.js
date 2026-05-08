@@ -9,25 +9,25 @@ import { createFMPanel } from "./effects/fm/fmPanel.js";
 
 const canvas = document.getElementById("canvas");
 
-// 🔥 MAIN ENGINE
+// MAIN ENGINE
 const engine = new Engine(canvas);
 
-// 🔥 EFFECT ROUTER
+// EFFECT ROUTER
 const engine2 = new Engine2(engine);
 
-// 🔥 UI
+// UI
 const ui = new UI(engine);
 
-// 🔥 CONNECT FM
+// CONNECT EFFECT ROUTER
 ui.engine2 = engine2;
 
-// 🔥 INSERT PANELS
+// INSERT PANELS FIRST
 document.querySelector(".tool-options").innerHTML =
   createDriftPanel() +
   createFMPanel();
 
-// 🔥 INIT UI
-ui.init();
-
-// 🔥 BUILD PALETTE
+// BUILD PALETTE BEFORE UI INIT
 buildPalette(engine);
+
+// INIT UI AFTER DOM ELEMENTS EXIST
+ui.init();
