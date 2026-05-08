@@ -1,3 +1,7 @@
+import { stopTransport }
+  from "./transport.js";
+
+
 export function bindLoad(ui) {
 
   const upload =
@@ -14,7 +18,7 @@ export function bindLoad(ui) {
 
   upload.onchange = (e) => {
 
-    ui.stop();
+    stopTransport(ui);
 
     ui.progress = 0;
 
