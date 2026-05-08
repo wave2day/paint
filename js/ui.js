@@ -12,7 +12,8 @@ import { bindPalette }
   from "./ui/paletteUI.js";
 import { bindExport }
   from "./ui/exportUI.js";
-
+import { bindTools }
+  from "./ui/toolsUI.js";
 
 
 export class UI {
@@ -40,7 +41,7 @@ export class UI {
   init() {
 
     bindLoad(this);
-    this.bindTools();
+    bindTools(this);
     bindTransport(this);
     bindExport(this);
     bindPalette(this);
@@ -49,80 +50,6 @@ export class UI {
     this.bindInputs();
 
     this.engine.clear();
-  }
-
-
-  bindTools() {
-
-    const driftPanel =
-      document.querySelector('[data-panel="drift"]');
-
-    const fmPanel =
-      document.querySelector('[data-panel="fm"]');
-
-    if (driftPanel) {
-      driftPanel.classList.add("active");
-    }
-
-    if (fmPanel) {
-      fmPanel.classList.remove("active");
-    }
-
-    const tools =
-      document.querySelectorAll(".tool-cell");
-
-    tools.forEach((btn) => {
-
-      btn.onclick = () => {
-
-        tools.forEach(b => {
-          b.classList.remove("active");
-        });
-
-        btn.classList.add("active");
-
-        const tool = btn.dataset.tool;
-
-        document
-          .querySelectorAll(".panel")
-          .forEach(panel => {
-            panel.classList.remove("active");
-          });
-
-        if (tool === "fm") {
-
-          if (this.engine2) {
-            this.engine2.mode = "fm";
-          }
-
-          const panel =
-            document.querySelector('[data-panel="fm"]');
-
-          if (panel) {
-            panel.classList.add("active");
-          }
-
-          if (this.engine2) {
-            this.engine2.draw(this.progress);
-          }
-
-          return;
-        }
-
-        if (this.engine2) {
-          this.engine2.mode = "drift";
-        }
-
-        const panel =
-          document.querySelector('[data-panel="drift"]');
-
-        if (panel) {
-          panel.classList.add("active");
-        }
-
-        this.engine2.draw(this.progress);
-      };
-    });
   }
 
 
