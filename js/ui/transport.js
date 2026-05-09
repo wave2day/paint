@@ -1,3 +1,7 @@
+import { appState }
+  from "../state/appState.js";
+
+
 export function bindTransport(ui) {
 
   const start =
@@ -17,11 +21,11 @@ export function bindTransport(ui) {
       return;
     }
 
-    if (ui.running) {
+    if (appState.transport.running) {
       return;
     }
 
-    ui.running = true;
+    appState.transport.running = true;
 
     loop(ui, speed);
   };
@@ -31,20 +35,28 @@ export function bindTransport(ui) {
   };
 }
 
+
 export function loop(ui, speedEl) {
 
-  if (!ui.running) return;
+  if (!appState.transport.running) {
+    return;
+  }
 
   const speed =
     parseFloat(speedEl.value);
 
-  ui.progress += speed;
+  appState.transport.progress += speed;
 
-  if (ui.progress > 1) {
-    ui.progress = 0;
+  if (
+    appState.transport.progress > 1
+  ) {
+
+    appState.transport.progress = 0;
   }
 
-  ui.engine2.draw(ui.progress);
+  ui.engine2.draw(
+    appState.transport.progress
+  );
 
   ui.raf =
     requestAnimationFrame(() => {
@@ -52,9 +64,10 @@ export function loop(ui, speedEl) {
     });
 }
 
+
 export function stopTransport(ui) {
 
-  ui.running = false;
+  appState.transport.running = false;
 
   if (ui.raf) {
     cancelAnimationFrame(ui.raf);
