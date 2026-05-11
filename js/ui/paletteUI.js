@@ -17,14 +17,10 @@ export function bindPalette(ui) {
 
         swatch.classList.add("active");
 
-        if (
-          ui.engine2 &&
-          ui.engine2.mode === "drift"
-        ) {
+        ui.engine.setBackground(color);
 
-          ui.engine.setBackground(color);
-
-          ui.engine2.draw(ui.progress);
+        if (ui.engine2) {
+          ui.queueRender();
         }
       };
     });

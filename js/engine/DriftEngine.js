@@ -1,6 +1,12 @@
+import { driftState }
+  from "../effects/drift/driftState.js";
+
 export class DriftEngine {
 
   constructor() {
+
+    this.state =
+      driftState;
 
     this.KEYS = [
       { b: 1.0, c: 1.0, s: 1.1, h: -10, r: 0.9, g: 1.0, b2: 1.2, gamma: 1.0 },
@@ -13,48 +19,81 @@ export class DriftEngine {
   }
 
   clamp(x, min, max) {
-    return Math.min(max, Math.max(min, x));
+
+    return Math.min(
+      max,
+      Math.max(min, x)
+    );
   }
 
   lerp(a, b, t) {
+
     return a * (1 - t) + b * t;
   }
 
   ease(x) {
+
     return x * x * (3 - 2 * x);
   }
 
   currentLook(p) {
 
-    const n = this.KEYS.length - 1;
+    const n =
+      this.KEYS.length - 1;
 
     const x = p * n;
 
-    const i = Math.min(
-      Math.floor(x),
-      n - 1
-    );
+    const i =
+      Math.min(
+        Math.floor(x),
+        n - 1
+      );
 
-    const f = this.ease(x - i);
+    const f =
+      this.ease(x - i);
 
-    const A = this.KEYS[i];
-    const B = this.KEYS[i + 1];
+    const A =
+      this.KEYS[i];
+
+    const B =
+      this.KEYS[i + 1];
 
     return {
-      b: this.lerp(A.b, B.b, f),
-      c: this.lerp(A.c, B.c, f),
-      s: this.lerp(A.s, B.s, f),
-      h: this.lerp(A.h, B.h, f),
-      r: this.lerp(A.r, B.r, f),
-      g: this.lerp(A.g, B.g, f),
-      b2: this.lerp(A.b2, B.b2, f),
-      gamma: this.lerp(A.gamma, B.gamma, f)
+
+      b:
+        this.lerp(A.b, B.b, f),
+
+      c:
+        this.lerp(A.c, B.c, f),
+
+      s:
+        this.lerp(A.s, B.s, f),
+
+      h:
+        this.lerp(A.h, B.h, f),
+
+      r:
+        this.lerp(A.r, B.r, f),
+
+      g:
+        this.lerp(A.g, B.g, f),
+
+      b2:
+        this.lerp(A.b2, B.b2, f),
+
+      gamma:
+        this.lerp(
+          A.gamma,
+          B.gamma,
+          f
+        )
     };
   }
 
   draw(base, progress = 0) {
 
-    base.progress = progress;
+    base.progress =
+      progress;
 
     base.clear();
 
@@ -88,13 +127,14 @@ export class DriftEngine {
         (smooth - 1) / 4
       );
 
-    const frame =
-      base.sourceCtx.getImageData(
-        0,
-        0,
-        base.drawW,
-        base.drawH
-      );
+const frame =
+  new ImageData(
+    new Uint8ClampedArray(
+      base.sourcePixels.data
+    ),
+    base.drawW,
+    base.drawH
+  );
 
     const d = frame.data;
 
@@ -113,10 +153,15 @@ export class DriftEngine {
       h + hueBias;
 
     const rad =
-      finalHue * Math.PI / 180;
+      finalHue *
+      Math.PI /
+      180;
 
-    const cos = Math.cos(rad);
-    const sin = Math.sin(rad);
+    const cos =
+      Math.cos(rad);
+
+    const sin =
+      Math.sin(rad);
 
     for (let i = 0; i < d.length; i += 4) {
 
@@ -147,31 +192,44 @@ export class DriftEngine {
         (.587 - .588 * cos - 1.050 * sin) * G +
         (.114 + .886 * cos - .203 * sin) * B;
 
-      R = (nr * r - 128) * c + 128;
-      G = (ng * g - 128) * c + 128;
-      B = (nb * b2 - 128) * c + 128;
+      R =
+        (nr * r - 128) * c + 128;
+
+      G =
+        (ng * g - 128) * c + 128;
+
+      B =
+        (nb * b2 - 128) * c + 128;
 
       const gray =
         (R + G + B) / 3;
 
-      R = gray + (R - gray) * s;
-      G = gray + (G - gray) * s;
-      B = gray + (B - gray) * s;
+      R =
+        gray + (R - gray) * s;
+
+      G =
+        gray + (G - gray) * s;
+
+      B =
+        gray + (B - gray) * s;
 
       R =
-        255 * Math.pow(
+        255 *
+        Math.pow(
           this.clamp(R / 255, 0, 1),
           1 / gamma
         );
 
       G =
-        255 * Math.pow(
+        255 *
+        Math.pow(
           this.clamp(G / 255, 0, 1),
           1 / gamma
         );
 
       B =
-        255 * Math.pow(
+        255 *
+        Math.pow(
           this.clamp(B / 255, 0, 1),
           1 / gamma
         );
@@ -207,61 +265,54 @@ export class DriftEngine {
         this.clamp(B, 0, 255);
     }
 
-    base.tempCtx.clearRect(
+    base.tempBuffer.ctx.clearRect(
       0,
       0,
       base.drawW,
       base.drawH
     );
 
-    base.tempCtx.putImageData(
+    base.tempBuffer.ctx.putImageData(
       frame,
       0,
       0
     );
 
-    base.tempCtx.globalCompositeOperation =
+    base.tempBuffer.ctx.globalCompositeOperation =
       "overlay";
 
-    base.tempCtx.fillStyle =
-      base.bgColor;
+    base.tempBuffer.ctx.fillStyle =
+      this.state.paletteColor;
 
-    base.tempCtx.fillRect(
+    base.tempBuffer.ctx.fillRect(
       0,
       0,
       base.drawW,
       base.drawH
     );
 
-    base.tempCtx.globalCompositeOperation =
+    base.tempBuffer.ctx.globalCompositeOperation =
       "source-over";
 
-    const viewW =
-      base.canvas.width;
+    base.clampOffsets();
 
-    const viewH =
-      base.canvas.height;
+   base.outputs.drift.ctx.clearRect(
+  0,
+  0,
+  base.drawW,
+  base.drawH
+);
 
-    base.offsetX = Math.min(
-      0,
-      Math.max(
-        base.offsetX,
-        viewW - base.drawW
-      )
-    );
+base.outputs.drift.ctx.drawImage(
+  base.tempBuffer.canvas,
+  0,
+  0
+);
 
-    base.offsetY = Math.min(
-      0,
-      Math.max(
-        base.offsetY,
-        viewH - base.drawH
-      )
-    );
-
-    base.ctx.drawImage(
-      base.tempCanvas,
-      base.offsetX,
-      base.offsetY
-    );
+base.ctx.drawImage(
+  base.outputs.drift.canvas,
+  base.offsetX,
+  base.offsetY
+);
   }
 }

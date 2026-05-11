@@ -8,7 +8,7 @@ export function bindWindowDrag(ui) {
 
   if (!win || !dragbar) return;
 
-  dragbar.addEventListener("mousedown", (e) => {
+  dragbar.addEventListener("pointerdown", (e) => {
 
     ui.draggingWindow = true;
 
@@ -32,7 +32,7 @@ export function bindWindowDrag(ui) {
     e.preventDefault();
   });
 
-  window.addEventListener("mousemove", (e) => {
+  window.addEventListener("pointermove", (e) => {
 
     if (!ui.draggingWindow) {
       return;
@@ -45,8 +45,19 @@ export function bindWindowDrag(ui) {
       (e.clientY - ui.winOffsetY) + "px";
   });
 
-  window.addEventListener("mouseup", () => {
+  window.addEventListener("pointerup", () => {
 
     ui.draggingWindow = false;
   });
+
+  const minimize =
+    document.querySelector(".minimize");
+
+  if (minimize) {
+
+    minimize.addEventListener("click", () => {
+
+      win.classList.toggle("collapsed");
+    });
+  }
 }

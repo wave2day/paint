@@ -1,3 +1,6 @@
+import { createBuffer }
+  from "./engine/buffers/createBuffer.js";
+
 export class Engine {
 
   constructor(canvas) {
@@ -11,7 +14,6 @@ export class Engine {
       );
 
     this.images = [];
-
     this.loadedCount = 0;
 
     this.bgColor = "#ffffff";
@@ -23,26 +25,26 @@ export class Engine {
     this.drawH = 0;
 
     this.progress = 0;
+    this.sourcePixels = null;
 
-    this.sourceCanvas =
-      document.createElement("canvas");
+    this.sourceBuffer =
+      createBuffer();
 
-    this.sourceCtx =
-      this.sourceCanvas.getContext(
-        "2d",
-        { willReadFrequently: true }
-      );
+    this.tempBuffer =
+      createBuffer();
 
-    this.tempCanvas =
-      document.createElement("canvas");
+      this.outputs = {
 
-    this.tempCtx =
-      this.tempCanvas.getContext(
-        "2d",
-        { willReadFrequently: true }
-      );
+  drift:
+    createBuffer(),
+
+  fm:
+    createBuffer()
+};
 
     this.resizeCanvas();
+
+
   }
 
   resizeCanvas() {
@@ -70,9 +72,7 @@ export class Engine {
   load(files, onProgress, onDone) {
 
     this.images = [];
-
     this.loadedCount = 0;
-
     this.progress = 0;
 
     const imageFiles =
@@ -144,32 +144,54 @@ export class Engine {
 
   prepareSource(img) {
 
-    this.sourceCanvas.width =
+    this.sourceBuffer.canvas.width =
       this.drawW;
 
-    this.sourceCanvas.height =
+    this.sourceBuffer.canvas.height =
       this.drawH;
 
-    this.tempCanvas.width =
-      this.drawW;
+    this.tempBuffer.canvas.width =
+  this.drawW;
 
-    this.tempCanvas.height =
-      this.drawH;
+this.tempBuffer.canvas.height =
+  this.drawH;
 
-    this.sourceCtx.clearRect(
+this.outputs.drift.canvas.width =
+  this.drawW;
+
+this.outputs.drift.canvas.height =
+  this.drawH;
+
+this.outputs.fm.canvas.width =
+  this.drawW;
+
+this.outputs.fm.canvas.height =
+  this.drawH;
+
+    this.sourceBuffer.ctx.clearRect(
       0,
       0,
       this.drawW,
       this.drawH
     );
 
-    this.sourceCtx.drawImage(
+    this.sourceBuffer.ctx.drawImage(
       img,
       0,
       0,
       this.drawW,
       this.drawH
     );
+            
+    this.sourcePixels =
+  this.sourceBuffer.ctx.getImageData(
+    0,
+    0,
+    this.drawW,
+    this.drawH
+  ); 
+
+
   }
 
   setBackground(color) {

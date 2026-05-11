@@ -6,7 +6,7 @@ export function bindInputs(ui) {
   if (hue) {
 
     hue.oninput = () => {
-      ui.engine2.draw(ui.progress);
+      ui.queueRender();
     };
   }
 
@@ -22,7 +22,7 @@ export function bindInputs(ui) {
       ui.engine2.fm.threshold =
         parseFloat(fmThreshold.value);
 
-      ui.engine2.draw(ui.progress);
+      ui.queueRender();
     };
   }
 
@@ -38,7 +38,7 @@ export function bindInputs(ui) {
       ui.engine2.fm.smooth =
         parseFloat(fmSmooth.value);
 
-      ui.engine2.draw(ui.progress);
+      ui.queueRender();
     };
   }
 }

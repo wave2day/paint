@@ -90,6 +90,6 @@ export function bindKnobs(ui) {
       ui.engine2.fm.colorize = value;
     }
 
-    ui.engine2.draw(ui.progress);
+    ui.queueRender();
   });
 }

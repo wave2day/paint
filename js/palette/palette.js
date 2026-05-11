@@ -14,9 +14,21 @@ export function buildPalette(engine){
 
     swatch.style.background = color;
 
-    swatch.addEventListener("click", () => {
-      engine.setBackground(color);
-    });
+ swatch.addEventListener("click", () => {
+
+  const mode =
+    engine.engine2.mode;
+
+  const module =
+    engine.engine2.modules[mode];
+
+  if (!module?.state) return;
+
+  module.state.paletteColor =
+    color;
+
+  engine.engine2.draw(0);
+});
 
     swatches.appendChild(swatch);
 

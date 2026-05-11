@@ -37,7 +37,7 @@ export class UI {
     this.raf = null;
 
     this.progress = 0;
-
+    this.renderQueued = false;
     this.draggingWindow = false;
     this.draggingX = false;
     this.draggingY = false;
@@ -77,4 +77,26 @@ export class UI {
     this.scrollPosX = 0;
     this.scrollPosY = 0;
   }
+
+  queueRender() {
+
+  if (this.renderQueued) {
+    return;
+  }
+
+  this.renderQueued = true;
+
+  requestAnimationFrame(() => {
+
+    this.renderQueued = false;
+
+    if (!this.engine2) {
+      return;
+    }
+
+    this.engine2.draw(
+      this.progress
+    );
+  });
+}
 }

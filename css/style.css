@@ -30,12 +30,23 @@ body{
 
   padding:8px;
 
-  border-radius:16px;
+  border-radius:0;
 
-  border:1px solid #aaa;
+  border-top:2px solid #ffffff;
+border-left:2px solid #ffffff;
+border-right:2px solid #555;
+border-bottom:2px solid #555;
 
-  box-shadow:0 4px 14px rgba(0,0,0,.22);
+
+box-shadow:
+  inset 1px 1px 0 #dfdfdf,
+  inset -1px -1px 0 #808080,
+  4px 4px 0 rgba(0,0,0,.25);
+
+
 }
+
+
 
 /* =========================
    TITLEBAR
@@ -109,6 +120,26 @@ body{
   border-left:2px solid #555;
   border-right:2px solid #fff;
   border-bottom:2px solid #fff;
+}
+.win-btn{
+  position:relative;
+}
+
+.minimize::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:8px;
+  height:2px;
+
+  background:#111;
+
+  left:50%;
+  top:8px;
+
+  transform:translateX(-50%);
 }
 
 /* =========================
@@ -576,4 +607,48 @@ canvas{
 
 .panel.active{
   display:block;
+}
+
+.title-left{
+
+  display:flex;
+  align-items:center;
+
+  gap:8px;
+}
+
+.title-icon{
+
+  width:25px;
+  height:25px;
+
+  image-rendering:pixelated;
+}
+
+.window.collapsed .menu,
+.window.collapsed .main,
+.window.collapsed .palette{
+
+  display:none;
+}
+
+.window.collapsed{
+
+  width:320px;
+}
+*{
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+
+  -webkit-tap-highlight-color:transparent;
+}
+
+img,
+button,
+span,
+div,
+canvas{
+
+  -webkit-user-drag:none;
 }

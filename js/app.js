@@ -13,13 +13,19 @@ const canvas = document.getElementById("canvas");
 const engine = new Engine(canvas);
 
 // EFFECT ROUTER
-const engine2 = new Engine2(engine);
+const engine2 =
+  new Engine2(engine);
 
 // UI
-const ui = new UI(engine);
+const ui =
+  new UI(engine);
 
 // CONNECT EFFECT ROUTER
-ui.engine2 = engine2;
+engine.engine2 =
+  engine2;
+
+ui.engine2 =
+  engine2;
 
 // INSERT PANELS FIRST
 document.querySelector(".tool-options").innerHTML =

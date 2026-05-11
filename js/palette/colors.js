@@ -1,22 +1,22 @@
 export const COLORS = [
 
+  "#ff0000",
+  "#00ff00",
+  "#0000ff",
   "#ff00ff",
+  "#00ffff",
+
   "#d405ff",
   "#8a2eff",
   "#c94cff",
   "#ff66cc",
+  "#b08cc2",
 
-  "#0033ff",
-  "#0055ff",
-  "#0077ff",
-  "#3399ff",
-  "#66ccff",
-
-  "#00ffcc",
-  "#00ff66",
   "#39ff14",
-  "#00ff00",
+  "#00ff66",
   "#66ff33",
+  "#ccff00",
+  "#ffff00",
 
   "#000000",
   "#ffffff",
@@ -29,23 +29,23 @@ export const COLORS = [
   "#3b3bb3",
   "#1a4ed8",
 
-  "#0044cc",
+  "#b08cc2",
+  "#d9a3c1",
+  "#e1a6bb",
+  "#c9b6e3",
+  "#f062b5",
+
+  "#0033ff",
   "#0066ff",
   "#0088ff",
-  "#00aaff",
-  "#00ccff",
+  "#4a6cff",
+  "#6fa3d8",
 
-  "#00e5ff",
   "#00ffff",
+  "#00e5ff",
+  "#00ccff",
   "#33ffff",
-  "#66ffff",
   "#99ffff",
-
-  "#ffff00",
-  "#ffcc00",
-  "#ff9900",
-  "#ff5500",
-  "#ff0033",
 
   "#4a6cff",
   "#74d4cf",

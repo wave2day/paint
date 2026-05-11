@@ -49,7 +49,7 @@ export function bindTools(ui) {
         }
 
         if (ui.engine2) {
-          ui.engine2.draw(ui.progress);
+          ui.queueRender();
         }
 
         return;
@@ -66,7 +66,7 @@ export function bindTools(ui) {
         panel.classList.add("active");
       }
 
-      ui.engine2.draw(ui.progress);
+      ui.queueRender();
     };
   });
 }

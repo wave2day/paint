@@ -168,7 +168,7 @@ export function bindScrollbars(ui) {
       ui.engine.offsetX =
         -(overflowX * ratio);
 
-      ui.engine2.draw(ui.progress);
+      ui.queueRender();
     }
 
     if (ui.draggingY && overflowY > 0) {
@@ -193,7 +193,7 @@ export function bindScrollbars(ui) {
       ui.engine.offsetY =
         -(overflowY * ratio);
 
-      ui.engine2.draw(ui.progress);
+      ui.queueRender();
     }
   });
 
