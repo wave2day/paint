@@ -1,162 +1,1556 @@
 <!DOCTYPE html>
 <html lang="cs">
-
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Paint Tool</title>
+<title>Glitch Graphics</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="./css/main.css?v=desktop-select-glow-2">
 
 </head>
 
 <body>
 
-<div class="window" id="window">
+<div class="desktop">
+
+  <div class="desktop-wallpaper"></div>
+
+  
+<!-- =========================
+     WORKSTATION
+========================== -->
+
+<div
+  class="window workstation"
+  id="workstation"
+  data-start-minimized="true"
+>
 
   <!-- TITLEBAR -->
-  <div class="titlebar" id="dragbar">
+  <div class="titlebar dragbar">
 
     <div class="title-left">
 
-  <img src="js/icons/appicon.svg"
-       class="title-icon"
-       alt="icon">
+      <img
+        src="./js/icons/appicon.svg"
+        class="title-icon"
+        alt=""
+      >
 
-  <span>glitch.graphics</span>
+      <span>Glitch Workstation</span>
 
-</div>
+    </div>
 
     <div class="win-buttons">
 
-  <div class="win-left">
+      <div class="win-left">
 
-    <span class="win-btn minimize"></span>
+        <div class="win-btn minimize"></div>
 
-    <span class="win-btn maximize"></span>
+        <div class="win-btn maximize"></div>
 
-  </div>
+      </div>
 
-  <div class="win-right">
+      <div class="win-right">
 
-    <span class="win-btn close"></span>
+        <div class="win-btn close"></div>
 
-  </div>
+      </div>
 
-</div>
+    </div>
 
   </div>
 
   <!-- MENU -->
   <div class="menu">
 
-    File&nbsp;&nbsp;
-    Edit&nbsp;&nbsp;
-    View&nbsp;&nbsp;
-    Image&nbsp;&nbsp;
-    Options&nbsp;&nbsp;
-    Help
+    <div class="menu-item">
+
+      File
+
+      <div class="menu-dropdown">
+
+        <div id="fileOpen">Open</div>
+        <div id="fileSave">Save</div>
+        <div id="fileExport">Export</div>
+
+      </div>
+
+    </div>
+
+    <div class="menu-item">
+
+      Edit
+
+      <div class="menu-dropdown">
+
+        <div id="editUndo" aria-disabled="true">Undo</div>
+        <div id="editRedo" aria-disabled="true">Redo</div>
+
+      </div>
+
+    </div>
+
+    <div class="menu-item">
+
+      View
+
+      <div class="menu-dropdown">
+
+        <div>Grid</div>
+        <div>Scrollbars</div>
+
+      </div>
+
+    </div>
+
+    <div class="menu-item">
+
+      Image
+
+      <div class="menu-dropdown">
+
+        <div>Resize</div>
+        <div>Rotate</div>
+
+      </div>
+
+    </div>
+
+    <div class="menu-item options-item">
+
+      Options
+
+      <div class="menu-dropdown">
+
+        <div id="openPalette">
+          Palette
+        </div>
+
+        <div>
+          Performance
+        </div>
+
+        <div>
+          Experimental
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="menu-item">
+
+      Help
+
+      <div class="menu-dropdown">
+
+        <div>About</div>
+
+        <div data-workstation-help="drift">Drift Help</div>
+
+        <div data-workstation-help="ar">AR Help</div>
+
+      </div>
+
+    </div>
 
   </div>
 
   <!-- MAIN -->
   <div class="main">
 
-    <!-- TOOLBAR -->
-    <div class="toolbar">
+    <div class="workspace">
 
-      <!-- TOOL GRID -->
-      <div class="tool-grid">
+      <!-- LEFT COLUMN -->
+      <div class="left-column">
 
-        <!-- DRIFT -->
-        <button id="tool-effect"
+        <!-- TOOLBAR -->
+        <div class="toolbar">
+
+          <!-- FIXED ENGINES -->
+          <div class="tool-engines">
+
+            <div class="tool-grid">
+
+              <button
                 class="tool-cell active"
-                data-tool="drift">
+                data-tool="drift"
+              >
 
-          <img src="js/icons/drift.svg"
-               class="tool-icon"
-               alt="Drift">
+                <img
+                  src="./js/icons/drift.svg"
+                  class="tool-icon"
+                  alt=""
+                >
 
-        </button>
+              </button>
 
-        <!-- FM -->
-        <button class="tool-cell"
-                data-tool="fm">
+              <button
+                class="tool-cell"
+                data-tool="fm"
+              >
 
-          <img src="js/icons/fm.svg"
-               class="tool-icon"
-               alt="FM">
+                <img
+                  src="./js/icons/fm.svg"
+                  class="tool-icon"
+                  alt=""
+                >
 
-        </button>
+              </button>
 
-        <!-- EMPTY -->
-        <button class="tool-cell">✦</button>
-        <button class="tool-cell">◎</button>
-        <button class="tool-cell">△</button>
-        <button class="tool-cell">☰</button>
-        <button class="tool-cell">◯</button>
-        <button class="tool-cell">✚</button>
+	              <button
+	                class="tool-cell"
+	                data-tool="ar"
+	              >
+                AR
+              </button>
+
+              <button
+                class="tool-cell"
+                data-tool="glitch"
+              >
+                GL
+              </button>
+
+              <button
+                class="tool-cell"
+                data-tool="rgb"
+              >
+
+                <img
+                  src="./js/icons/rgb.svg"
+                  class="tool-icon tool-icon-rgb"
+                  alt=""
+                >
+
+              </button>
+
+              <button
+                class="tool-cell"
+                data-tool="dither"
+              >
+
+                <img
+                  src="./js/icons/ds.svg"
+                  class="tool-icon"
+                  alt=""
+                >
+
+              </button>
+
+              <button
+                class="tool-cell"
+                data-tool="fx"
+              >
+                FX
+              </button>
+
+              <button
+                class="tool-cell"
+                data-tool="feedback"
+              >
+
+                <img
+                  src="./js/icons/fb.svg"
+                  class="tool-icon tool-icon-rgb"
+                  alt=""
+                >
+
+              </button>
+
+            </div>
+
+          </div>
+
+          <!-- CONTROLS -->
+          <div class="tool-controls">
+
+            <div class="tool-options"></div>
+
+          </div>
+
+        </div>
 
       </div>
 
-      <!-- TOOL OPTIONS -->
-      <div class="tool-options"></div>
+      <!-- RIGHT COLUMN -->
+      <div class="right-column">
 
-    </div>
+        <!-- CANVAS -->
+        <div class="canvas-shell">
 
-    <!-- LEFT BUTTONS -->
-    <div class="left-bottom">
+          <div class="canvas-area">
 
-      <button id="pickBtn">
-        LOAD
-      </button>
+            <canvas id="canvas"></canvas>
 
-      <button id="record">
-        EXPORT
-      </button>
+          </div>
 
-      <input type="file"
-             id="upload"
-             accept="image/*">
+          <div class="scroll-x">
+            <span></span>
+          </div>
 
-    </div>
+          <div class="scroll-y">
+            <span></span>
+          </div>
 
-    <!-- CANVAS -->
-    <div class="canvas-shell">
+          <div class="scroll-corner"></div>
 
-      <div class="canvas-area">
+        </div>
 
-        <canvas id="canvas"></canvas>
+        <!-- PALETTE -->
+        <div class="palette">
 
-      </div>
+          <div class="palette-right">
 
-      <div class="scroll-x">
-        <span></span>
-      </div>
+            <div class="swatches"></div>
 
-      <div class="scroll-y">
-        <span></span>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
 
   </div>
 
-  <!-- PALETTE -->
-  <div class="palette">
+  <!-- BOTTOM -->
+  <div class="window-bottom">
 
-    <div class="palette-right">
+    <div class="resize-grip"></div>
 
-      <div class="swatches"></div>
+  </div>
+
+</div>
+
+  <!-- =========================
+       CHAIN MACHINE
+  ========================== -->
+
+  <div
+    class="window chainmachine"
+    id="chainMachine"
+    data-start-minimized="true"
+  >
+
+    <!-- TITLEBAR -->
+    <div class="titlebar dragbar">
+
+      <div class="title-left">
+
+        <img
+          src="./js/icons/chainicon.svg"
+          class="title-icon"
+          alt=""
+        >
+
+        <span>Chain Machine</span>
+
+      </div>
+
+      <div class="win-buttons">
+
+        <div class="win-left">
+
+          <div class="win-btn minimize"></div>
+
+          <div class="win-btn maximize"></div>
+
+        </div>
+
+        <div class="win-right">
+
+          <div class="win-btn close"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MENU -->
+    <div class="menu">
+
+      <div class="menu-item">
+
+        Patch
+
+        <div class="menu-dropdown">
+
+          <div>New Patch</div>
+          <div>Load Patch</div>
+          <div>Save Patch</div>
+
+        </div>
+
+      </div>
+
+      <div class="menu-item">
+
+        Signal
+
+        <div class="menu-dropdown">
+
+          <div>Oscillator</div>
+          <div>Noise</div>
+          <div>Input</div>
+
+        </div>
+
+      </div>
+
+      <div class="menu-item">
+
+        Route
+
+        <div class="menu-dropdown">
+
+          <div>Connect</div>
+          <div>Disconnect</div>
+
+        </div>
+
+      </div>
+
+      <div class="menu-item">
+
+        Output
+
+        <div class="menu-dropdown">
+
+          <div>Preview</div>
+          <div>Render</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="chainmachine-view">
+
+    <div class="workspace">
+
+      <!-- LEFT -->
+      <div class="panel">
+
+        <div class="panel-title">
+          OUTPUT SOURCES
+        </div>
+
+        <div class="source-list">
+
+          <div class="source">
+            FM lines<br>
+            buffer: outputs.fm
+          </div>
+
+          <div class="source">
+            Drift color<br>
+            buffer: outputs.drift
+          </div>
+
+          <div class="source">
+            Camera capture<br>
+            live input
+          </div>
+
+          <div class="source">
+            Noise texture<br>
+            procedural
+          </div>
+
+          <div class="source">
+            Feedback loop<br>
+            delay buffer
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- GRAPH -->
+      <div class="graph">
+
+        <svg
+          class="wires"
+          viewBox="0 0 760 560"
+          preserveAspectRatio="none"
+        >
+
+          <path
+            d="M145 112 C230 80, 220 150, 285 166"
+            fill="none"
+            stroke="#00f0ff"
+            stroke-width="4"
+          />
+
+          <path
+            d="M430 166 C505 180, 500 270, 465 288"
+            fill="none"
+            stroke="#ff00bf"
+            stroke-width="4"
+          />
+
+          <path
+            d="M325 340 C400 380, 430 320, 465 288"
+            fill="none"
+            stroke="#fff36c"
+            stroke-width="4"
+          />
+
+        </svg>
+
+
+
+        <div class="node n1">
+
+          <div class="head">
+            IMAGE INPUT
+          </div>
+
+          <div class="port out"></div>
+
+          <div class="body">
+            source frame<br>
+            camera / upload
+          </div>
+
+        </div>
+
+
+
+        <div class="node n2">
+
+          <div class="head">
+            FM NODE
+          </div>
+
+          <div class="port in"></div>
+          <div class="port out"></div>
+
+          <div class="body">
+            freq / depth<br>
+            signal lines
+          </div>
+
+        </div>
+
+
+
+        <div class="node n3">
+
+          <div class="head">
+            DRIFT NODE
+          </div>
+
+          <div class="port in"></div>
+          <div class="port out"></div>
+
+          <div class="body">
+            color phase<br>
+            time-of-day shift
+          </div>
+
+        </div>
+
+
+
+        <div class="node n4">
+
+          <div class="head">
+            COMPOSITE
+          </div>
+
+          <div class="port in"></div>
+          <div class="port out"></div>
+
+          <div class="body">
+            overlay / screen<br>
+            opacity 68%
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- PREVIEW -->
+      <div class="preview">
+
+        <div class="panel-title">
+          FINAL GLITCH OUT
+        </div>
+
+        <div class="preview-inner"></div>
+
+        <div class="meters">
+
+          <div>
+            signal intensity
+          </div>
+
+          <div
+            class="meter"
+            style="--v:72%"
+          ></div>
+
+          <div>
+            feedback voltage
+          </div>
+
+          <div
+            class="meter"
+            style="--v:48%"
+          ></div>
+
+          <div>
+            export route
+          </div>
+
+          <div
+            class="meter"
+            style="--v:88%"
+          ></div>
+
+        </div>
+
+        <div class="status">
+          PATCH:
+          image → FM + drift →
+          composite → feedback →
+          final output
+        </div>
+
+      </div>
 
     </div>
 
   </div>
 
 </div>
+    <!-- BOTTOM -->
+    <div class="window-bottom">
 
-<script type="module" src="js/app.js"></script>
+      <div class="resize-grip"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================
+       GALLERY
+  ========================== -->
+
+  <div
+    class="window gallery"
+    id="gallery"
+    data-start-minimized="true"
+  >
+
+    <!-- TITLEBAR -->
+    <div class="titlebar dragbar">
+
+      <div class="title-left">
+
+        <img
+          src="./js/icons/galleryicon.svg"
+          class="title-icon"
+          alt=""
+        >
+
+        <span>Gallery</span>
+
+      </div>
+
+      <div class="win-buttons">
+
+        <div class="win-left">
+
+          <div class="win-btn minimize"></div>
+
+          <div class="win-btn maximize"></div>
+
+        </div>
+
+        <div class="win-right">
+
+          <div class="win-btn close"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MENU -->
+    <div class="menu">
+
+      <div class="menu-item">
+
+        File
+
+        <div class="menu-dropdown">
+
+          <div data-gallery-action="import-images">Import Images</div>
+          <div data-gallery-action="import-folder">Import Folder</div>
+          <div data-gallery-action="refresh-project-folders">Refresh Project Folders</div>
+          <div data-gallery-action="recent">Recent Files</div>
+          <div data-gallery-action="rename">Rename</div>
+          <div data-gallery-action="delete">Delete</div>
+          <div data-gallery-action="properties">Properties</div>
+
+        </div>
+
+      </div>
+
+      <div class="menu-item">
+
+        View
+
+        <div class="menu-dropdown">
+
+          <div data-gallery-view="grid">Grid View</div>
+          <div data-gallery-view="list">List View</div>
+          <div data-gallery-thumb-size="large">Large Thumbnails</div>
+          <div data-gallery-thumb-size="small">Small Thumbnails</div>
+          <div data-gallery-toggle-panel="true">Preview Panel</div>
+          <div data-gallery-toggle-fullscreen="true">Fullscreen</div>
+
+        </div>
+
+      </div>
+
+      <div class="menu-item">
+
+        Library
+
+        <div class="menu-dropdown">
+
+          <div data-gallery-library="wallpapers">Wallpapers</div>
+          <div data-gallery-library="camera">Camera</div>
+          <div data-gallery-library="glitch">Glitch Outputs</div>
+          <div data-gallery-library="chain">Chain Outputs</div>
+          <div data-gallery-library="textures">Textures</div>
+          <div data-gallery-library="archive">Archive</div>
+          <div data-gallery-library="favorites">Collections</div>
+
+        </div>
+
+      </div>
+
+      <div class="menu-item">
+
+        Tools
+
+        <div class="menu-dropdown">
+
+          <div data-gallery-action="open-workstation">Open in Glitch Workstation</div>
+          <div aria-disabled="true">Open in Chain Machine</div>
+          <div>Set as Wallpaper</div>
+          <div>Create Collection</div>
+          <div>Generate Thumbnail Cache</div>
+
+        </div>
+
+      </div>
+
+      <div class="menu-item">
+
+        Help
+
+        <div class="menu-dropdown">
+
+          <div data-gallery-action="about-gallery">About Gallery</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <div class="window-body">
+
+        <!-- TOOLBAR -->
+        <div class="gallery-toolbar">
+
+          <div class="gallery-toolbar-group gallery-nav">
+
+            <button>&lt;</button>
+
+            <button>&gt;</button>
+
+            <button>UP</button>
+
+          </div>
+
+          <div class="gallery-toolbar-separator"></div>
+
+          <div class="gallery-toolbar-group">
+
+            <button data-gallery-action="import-images">IMPORT</button>
+
+          </div>
+
+          <div class="gallery-toolbar-separator"></div>
+
+          <div class="gallery-toolbar-group gallery-toolbar-segment">
+
+            <button data-gallery-view="grid">GRID</button>
+
+            <button data-gallery-view="list">LIST</button>
+
+          </div>
+
+          <div class="gallery-toolbar-group gallery-toolbar-segment">
+
+            <button data-gallery-thumb-size="small">SMALL</button>
+
+            <button data-gallery-thumb-size="large">LARGE</button>
+
+          </div>
+
+          <div class="gallery-toolbar-group gallery-toolbar-utilities">
+
+            <button data-gallery-toggle-panel="true">PANEL</button>
+
+            <button data-gallery-toggle-fullscreen="true">FULL</button>
+
+          </div>
+
+          <div class="gallery-toolbar-separator"></div>
+
+          <label class="gallery-sort">
+            Sort:
+            <select>
+              <option value="name">Name</option>
+              <option value="date" selected>Date</option>
+              <option value="size">Size</option>
+            </select>
+          </label>
+
+          <div class="gallery-toolbar-spacer"></div>
+
+          <div class="gallery-count">
+            0 items
+          </div>
+
+          <input
+            class="gallery-search"
+            type="search"
+            placeholder="Search..."
+          >
+
+        </div>
+
+        <div class="gallery-library">
+
+          <aside class="gallery-sidebar">
+
+            <div class="gallery-sidebar-title">
+              Library
+            </div>
+
+            <div class="gallery-library-list" data-gallery-library-list>
+
+            <button class="library-node active" data-library="wallpapers">
+              <span>▾</span>
+              Wallpapers
+            </button>
+
+            <button class="library-node" data-library="camera">
+              <span>▸</span>
+              Camera
+            </button>
+
+            <button class="library-node" data-library="glitch">
+              <span>▸</span>
+              Glitch Outputs
+            </button>
+
+            <button class="library-node" data-library="chain">
+              <span>▸</span>
+              Chain Outputs
+            </button>
+
+            <button class="library-node" data-library="textures">
+              <span>□</span>
+              Textures
+            </button>
+
+            <button class="library-node" data-library="archive">
+              <span>+</span>
+              Archive
+            </button>
+
+            </div>
+
+            <div class="gallery-sidebar-section">
+              Collections
+            </div>
+
+            <button class="library-node library-child" data-library="favorites">
+              <span>★</span>
+              Favorites
+            </button>
+
+            <button class="library-node library-child" data-library="neon">
+              <span>□</span>
+              Neon
+            </button>
+
+            <button class="library-node library-child" data-library="purple">
+              <span>□</span>
+              Purple
+            </button>
+
+            <button class="library-node library-child" data-library="glitch-collection">
+              <span>□</span>
+              Glitch
+            </button>
+
+          </aside>
+
+          <section class="gallery-content">
+
+            <div class="gallery-path">
+              Library &gt; Wallpapers
+            </div>
+
+            <!-- GRID -->
+            <div class="gallery-grid">
+
+            </div>
+
+          </section>
+
+        </div>
+
+        <div class="gallery-inspector">
+
+          <div class="gallery-selected-preview">
+            <img
+              class="gallery-preview-image"
+              alt=""
+            >
+          </div>
+
+          <div class="gallery-selected-info">
+
+            <div class="gallery-selected-name">
+              No item selected
+            </div>
+
+            <div class="gallery-selected-meta">
+              Select an asset from the library.
+            </div>
+
+            <div class="gallery-selected-source">
+              Source: Library
+            </div>
+
+          </div>
+
+          <div class="gallery-actions">
+
+            <button class="gallery-action-wallpaper">
+              Set as Wallpaper
+            </button>
+
+            <button class="gallery-action-workstation">
+              Open in Workstation
+            </button>
+
+            <button
+              class="gallery-action-favorite"
+            >
+              Favorite
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="window-bottom">
+
+      <div class="resize-grip"></div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================
+       CAMERA
+  ========================== -->
+
+  <div
+    class="window camera"
+    id="camera"
+    data-start-minimized="true"
+  >
+
+    <!-- TITLEBAR -->
+    <div class="titlebar dragbar">
+
+      <div class="title-left">
+
+        <img
+          src="./js/icons/cameraicon.svg"
+          class="title-icon"
+          alt=""
+        >
+
+        <span>Camera Bend</span>
+
+      </div>
+
+      <div class="win-buttons">
+
+        <div class="win-left">
+
+          <div class="win-btn minimize"></div>
+
+          <div class="win-btn maximize is-disabled"></div>
+
+        </div>
+
+        <div class="win-right">
+
+          <div class="win-btn close"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MENU -->
+    <div class="menu">
+
+      <div class="menu-item">
+        Device
+      </div>
+
+      <div class="menu-item">
+        Signal
+      </div>
+
+      <div class="menu-item">
+        Bend
+      </div>
+
+      <div class="menu-item">
+        Capture
+      </div>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <div class="camera-view camera-view--bend">
+
+        <!-- LEFT -->
+        <div class="camera-side">
+
+          <div class="camera-block">
+
+            <div class="camera-label">
+              SOURCE
+            </div>
+
+            <div class="camera-button active">
+              LIVE DV
+            </div>
+
+            <div class="camera-button">
+              FEEDBACK
+            </div>
+
+            <div class="camera-button">
+              NOISE
+            </div>
+
+          </div>
+
+
+
+          <div class="camera-block">
+
+            <div class="camera-label">
+              STATUS
+            </div>
+
+            <div class="camera-led">
+              REC ●
+            </div>
+
+            <div class="camera-led cyan">
+              SIGNAL
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- PREVIEW -->
+        <div class="camera-preview">
+
+          <div class="camera-screen">
+
+            <div class="camera-overlay">
+              BEND ACTIVE: RGB DRIFT
+            </div>
+
+            <div class="camera-timecode">
+              00:02:17:09
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- SWITCHES -->
+        <div class="camera-switches">
+
+          <div class="switch">
+            MELT
+          </div>
+
+          <div class="switch active">
+            RGB
+          </div>
+
+          <div class="switch">
+            BLEED
+          </div>
+
+          <div class="switch">
+            HOLD
+          </div>
+
+          <div class="switch">
+            DRIFT
+          </div>
+
+        </div>
+
+        <div class="camera-input-strip">
+
+          <div class="camera-input">
+            <div class="camera-label">INPUT</div>
+            <div class="camera-live">LIVE DV <span></span></div>
+          </div>
+
+          <div class="camera-speaker" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="camera-power">
+            <span></span>
+            POWER
+          </div>
+
+        </div>
+
+        <div class="camera-transport">
+
+          <button class="camera-action camera-action-rec"><span></span>REC</button>
+          <button class="camera-action camera-action-photo"><span></span>PHOTO</button>
+          <button class="camera-action camera-action-preview"><span></span>PREVIEW</button>
+          <button class="camera-action camera-action-input"><span></span>INPUT</button>
+          <button class="camera-action camera-action-menu"><span></span>MENU</button>
+
+        </div>
+
+        <div class="camera-control-area">
+
+          <div class="camera-bend-grid">
+
+            <div class="camera-module cyan">
+              <div class="camera-module-title">RGB DRIFT</div>
+              <div class="camera-module-icon">≈</div>
+              <div class="camera-knob" style="--turn:45deg"></div>
+              <div class="camera-scale">0 <span>100</span></div>
+              <div class="camera-readout">72%</div>
+            </div>
+
+            <div class="camera-module violet">
+              <div class="camera-module-title">MELT</div>
+              <div class="camera-module-icon">⠿</div>
+              <div class="camera-knob" style="--turn:33deg"></div>
+              <div class="camera-scale">0 <span>100</span></div>
+              <div class="camera-readout">81%</div>
+            </div>
+
+            <div class="camera-module red">
+              <div class="camera-module-title">BLEED</div>
+              <div class="camera-module-icon">▣</div>
+              <div class="camera-knob" style="--turn:23deg"></div>
+              <div class="camera-scale">0 <span>100</span></div>
+              <div class="camera-readout">58%</div>
+            </div>
+
+            <div class="camera-module yellow">
+              <div class="camera-module-title">HOLD</div>
+              <div class="camera-module-icon">Ⅱ</div>
+              <div class="camera-knob" style="--turn:20deg"></div>
+              <div class="camera-scale">0 <span>100</span></div>
+              <div class="camera-readout">67%</div>
+            </div>
+
+            <div class="camera-module green">
+              <div class="camera-module-title">DRIFT</div>
+              <div class="camera-module-icon">≋</div>
+              <div class="camera-knob" style="--turn:-38deg"></div>
+              <div class="camera-scale">0 <span>100</span></div>
+              <div class="camera-readout">39%</div>
+            </div>
+
+            <div class="camera-module amber">
+              <div class="camera-module-title">INTERRUPT</div>
+              <div class="camera-module-icon">ϟ</div>
+              <div class="camera-toggle"><span>MANUAL</span><i></i><span>AUTO</span></div>
+              <div class="camera-knob" style="--turn:-48deg"></div>
+              <div class="camera-scale">0 <span>100</span></div>
+              <div class="camera-readout">23</div>
+            </div>
+
+          </div>
+
+          <div class="camera-side-stack">
+
+            <div class="camera-zoom-panel">
+              <div class="camera-side-title">ZOOM</div>
+              <div class="camera-zoom-labels"><span>W</span><span>T</span></div>
+              <div class="camera-zoom-track"><span></span></div>
+            </div>
+
+            <div class="camera-mini-panel">
+              <div class="camera-mini-row"><span>FOCUS</span><button>AUTO</button></div>
+              <div class="camera-mini-row"><span>MODE</span><button>BEND <i></i></button></div>
+            </div>
+
+            <div class="camera-feedback-panel">
+              <div class="camera-side-title">FEEDBACK</div>
+              <div class="camera-knob small" style="--turn:-28deg"></div>
+              <div class="camera-readout violet-readout">42%</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="camera-routing">
+          <div class="camera-routing-title">SIGNAL ROUTING</div>
+          <div class="camera-route-chain">
+            <span>LENS <i class="green"></i></span>
+            <b></b>
+            <span class="active">CCD <i class="magenta"></i></span>
+            <b></b>
+            <span>DSP <i class="yellow"></i></span>
+            <b></b>
+            <span>BUFFER <i class="blue"></i></span>
+          </div>
+        </div>
+
+        <div class="camera-status">
+          <div class="camera-status-title">STATUS</div>
+          <div class="camera-status-grid">
+            <div>RESOLUTION <span>720x480</span></div>
+            <div>FRAME RATE <span>29.97FPS</span></div>
+            <div>SIGNAL LOCK <span>STABLE</span></div>
+            <div>NOISE FLOOR <span>-42.3dB</span></div>
+            <div>TEMP <span>36.2°C</span></div>
+          </div>
+        </div>
+
+        <div class="camera-footer">
+          GLITCH WORKSTATION v1.2
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="window-bottom">
+
+      <div class="resize-grip"></div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- =========================
+       PIXEL
+  ========================== -->
+
+  <div
+    class="window pixel-window"
+    id="pixel"
+    data-start-minimized="true"
+  >
+
+    <div class="titlebar dragbar">
+
+      <div class="title-left">
+
+        <img
+          src="./js/icons/pixelicon.svg"
+          class="title-icon"
+          alt=""
+        >
+
+        <span>Pixel</span>
+
+      </div>
+
+      <div class="win-buttons">
+
+        <div class="win-left">
+
+          <div class="win-btn minimize"></div>
+
+          <div class="win-btn maximize"></div>
+
+        </div>
+
+        <div class="win-right">
+
+          <div class="win-btn close"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="menu">
+
+      <div class="menu-item">
+
+        File
+
+        <div class="menu-dropdown">
+
+          <div data-pixel-menu="convert">Convert</div>
+          <div data-pixel-menu="download-desktop-svg">Download Desktop SVG</div>
+          <div data-pixel-menu="download-titlebar-svg">Download Titlebar SVG</div>
+          <div data-pixel-menu="download-desktop-png">Download Desktop PNG</div>
+          <div data-pixel-menu="download-titlebar-png">Download Titlebar PNG</div>
+
+        </div>
+
+      </div>
+
+      <div class="menu-item">
+
+        View
+
+        <div class="menu-dropdown">
+
+          <div>Desktop Icon</div>
+          <div>Titlebar Icon</div>
+          <div>Canvas Center</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div
+      class="main pixel-main"
+      data-pixel-root
+    ></div>
+
+    <div class="pixel-status">
+      <span>Pixel Icon Engine</span>
+      <span data-pixel-status>Ready</span>
+    </div>
+
+    <div class="window-bottom">
+
+      <div class="resize-grip"></div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <!-- =========================
+       GLITCH GRAPHICS
+  ========================== -->
+
+  <div
+    class="window glitch-graphics-window"
+    id="glitchGraphics"
+    data-start-minimized="true"
+  >
+
+    <div class="titlebar dragbar">
+
+      <div class="title-left">
+
+        <img
+          src="./js/icons/glitchgraphicsicon.svg"
+          class="title-icon"
+          alt=""
+        >
+
+        <span>Glitch Graphics</span>
+
+      </div>
+
+      <div class="win-buttons">
+
+        <div class="win-left">
+
+          <div class="win-btn minimize"></div>
+
+          <div class="win-btn maximize"></div>
+
+        </div>
+
+        <div class="win-right">
+
+          <div class="win-btn close"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="menu">
+
+      <div class="menu-item">
+
+        File
+
+        <div class="menu-dropdown">
+
+          <div data-glitch-action="reload">Reload</div>
+          <div data-glitch-action="open-browser">Open in Browser</div>
+          <div data-glitch-action="snapshot-desktop" aria-disabled="true">Snapshot to Desktop</div>
+          <div data-glitch-action="close">Close</div>
+
+        </div>
+
+      </div>
+
+      <div class="menu-item">
+
+        View
+
+        <div class="menu-dropdown">
+
+          <div data-glitch-action="fit">Fit Window</div>
+          <div>Actual Size</div>
+          <div>Zoom In</div>
+          <div>Zoom Out</div>
+
+        </div>
+
+      </div>
+
+      <div class="menu-item">
+
+        Capture
+
+        <div class="menu-dropdown">
+
+          <div data-glitch-action="snapshot-desktop" aria-disabled="true">Snapshot to Desktop</div>
+          <div aria-disabled="true">Copy Snapshot</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="main glitch-graphics-main">
+
+      <iframe
+        class="glitch-graphics-frame"
+        src="https://glitch.graphics"
+        title="Glitch Graphics"
+        loading="lazy"
+      ></iframe>
+
+      <div class="glitch-graphics-frame-shield"></div>
+
+    </div>
+
+    <div class="glitch-graphics-status">
+      <span>Source <b>glitch.graphics</b></span>
+      <span data-glitch-graphics-status>Ready</span>
+    </div>
+
+    <div class="window-bottom">
+
+      <div class="resize-grip"></div>
+
+    </div>
+
+  </div>
+
+
+
+<script
+  type="module"
+  src="./js/app.js?v=desktop-selection-menu-1"
+></script>
+
+<script
+  type="module"
+  src="./js/workstation/workstation.js?v=floating-effect-block-snap-1"
+></script>
 
 </body>
 </html>
