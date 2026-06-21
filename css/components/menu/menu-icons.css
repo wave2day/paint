@@ -1,0 +1,133 @@
+.context-icon{
+  width:16px;
+  height:16px;
+  flex:none;
+  position:relative;
+  border:1px solid var(--outline);
+  opacity:.88;
+}
+
+.context-logo{
+  width:20px;
+  height:20px;
+  flex:none;
+  border:1px solid var(--outline);
+
+  background:
+    radial-gradient(circle at 30% 30%, #ff7af6, transparent 40%),
+    radial-gradient(circle at 70% 60%, #6ae6ff, transparent 40%),
+    #4b2ca3;
+
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.35);
+}
+
+.context-grid{
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #1c1833 0 2px,
+      transparent 2px 4px
+    );
+}
+
+.context-dots{
+  background:
+    radial-gradient(
+      #1c1833 1px,
+      transparent 1px
+    );
+
+  background-size:4px 4px;
+}
+
+.context-refresh{
+  border-radius:50%;
+}
+
+.context-image{
+  background:
+    linear-gradient(
+      to top,
+      #1c1833 0 3px,
+      transparent 3px
+    );
+}
+
+.context-settings{
+  border-radius:50%;
+}
+
+.context-plus::before,
+.context-plus::after{
+
+  content:"";
+
+  position:absolute;
+
+  background:#1c1833;
+}
+
+.context-plus::before{
+
+  width:10px;
+  height:2px;
+
+  left:2px;
+  top:6px;
+}
+
+.context-plus::after{
+
+  width:2px;
+  height:10px;
+
+  left:6px;
+  top:2px;
+}
+
+.context-columns{
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #1c1833 0 1px,
+      transparent 1px 5px
+    );
+}
+
+.context-magnet{
+
+  border-left:4px solid var(--outline);
+
+  border-right:4px solid var(--outline);
+
+  border-bottom:4px solid var(--outline);
+
+  border-top:0;
+}
+
+.context-color{
+  background:#dcdfff;
+}
+
+.context-play{
+  border-radius:50%;
+}
+
+.context-folder::before{
+
+  content:"";
+
+  position:absolute;
+
+  left:1px;
+  top:-4px;
+
+  width:8px;
+  height:4px;
+
+  border:1px solid var(--outline);
+
+  background:var(--surface);
+}

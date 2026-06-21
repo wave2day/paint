@@ -1,0 +1,35 @@
+/* =========================
+   DESKTOP WALLPAPER
+========================= */
+
+.desktop-wallpaper{
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:0;
+
+  overflow:hidden;
+
+  background-color:#111;
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  pointer-events:none;
+
+}
+
+
+
+/* =========================
+   WALLPAPER FIT MENU
+========================= */
+
+.wallpaper-fit-menu{
+
+  min-width:190px;
+
+}

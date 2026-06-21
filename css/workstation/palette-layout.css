@@ -1,0 +1,105 @@
+/* =========================
+   PALETTE LAYOUT
+========================= */
+
+.palette{
+
+  flex-shrink:0;
+
+  min-width:0;
+
+  display:flex;
+
+  overflow:hidden;
+
+  padding:0;
+
+  background:#c7c2bd;
+
+  border-top:2px solid #777;
+  border-left:2px solid #777;
+
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+
+  box-sizing:border-box;
+}
+
+
+
+/* =========================
+   INNER
+========================= */
+
+.palette-right{
+
+  flex:1;
+
+  min-width:0;
+
+  display:flex;
+
+  overflow:hidden;
+}
+
+
+
+/* =========================
+   GRID
+========================= */
+
+.swatches{
+  --palette-grid-gap:
+    clamp(
+      1px,
+      0.12vw,
+      6px
+    );
+
+  flex:1;
+
+  min-width:0;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(25, 1fr);
+
+  grid-template-rows:
+    repeat(2, auto);
+
+  align-items:start;
+
+  gap:
+    var(--palette-grid-gap);
+
+  padding-top:
+    clamp(
+      2px,
+      0.22vw,
+      7px
+    );
+
+  padding-right:
+    clamp(
+      2px,
+      0.22vw,
+      7px
+    );
+
+  padding-left:
+    clamp(
+      2px,
+      0.22vw,
+      7px
+    );
+
+  padding-bottom:
+    clamp(
+      3px,
+      0.28vw,
+      8px
+    );
+
+  box-sizing:border-box;
+}

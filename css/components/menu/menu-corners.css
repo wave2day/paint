@@ -1,0 +1,122 @@
+/* =========================================
+   menu-corners.css
+========================================= */
+
+.context-menu,
+.context-submenu{
+
+  --corner:4px;
+
+  --inner-corner:3px;
+}
+
+
+
+/* =========================================
+   OUTER OUTLINE
+========================================= */
+
+.context-menu::before,
+.context-submenu::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:-4;
+
+  pointer-events:none;
+
+  opacity:.96;
+
+  filter:contrast(1.04);
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #2b2254 0%,
+      #17122f 100%
+    );
+
+  clip-path:polygon(
+
+    4px 0,
+
+    calc(100% - 4px) 0,
+
+    100% 4px,
+
+    100% calc(100% - 4px),
+
+    calc(100% - 4px) 100%,
+
+    4px 100%,
+
+    0 calc(100% - 4px),
+
+    0 4px
+  );
+}
+
+
+
+/* =========================================
+   INNER SURFACE
+========================================= */
+
+.context-menu::after,
+.context-submenu::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:1px;
+
+  z-index:-3;
+
+  pointer-events:none;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #f1edff 0%,
+      #ebe5ff 48%,
+      #dfd6f8 100%
+    );
+
+  background-size:100% 2px;
+
+  box-shadow:
+
+    inset 1px 1px 0 rgba(255,255,255,.88),
+
+    inset 2px 2px 0 rgba(255,255,255,.22),
+
+    inset -1px -1px 0 rgba(56,42,104,.42),
+
+    inset -2px -2px 0 rgba(28,18,66,.12);
+
+  clip-path:polygon(
+
+    3px 0,
+
+    calc(100% - 3px) 0,
+
+    100% 3px,
+
+    100% calc(100% - 3px),
+
+    calc(100% - 3px) 100%,
+
+    3px 100%,
+
+    0 calc(100% - 3px),
+
+    0 3px
+  );
+}

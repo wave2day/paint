@@ -1,0 +1,101 @@
+/* Glitch Graphics embedded web window. */
+
+.glitch-graphics-window{
+  --window-title-start:#4a22a8;
+  --window-title-mid:#5a2bc0;
+  --window-title-end:#8b58e6;
+  --window-title-color:#f6f0ff;
+  --window-menu-accent:var(--window-title-start);
+  --window-menu-accent-color:#fff;
+
+  left:180px;
+  top:86px;
+  width:760px;
+  height:560px;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.glitch-graphics-window,
+.glitch-graphics-window *{
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.glitch-graphics-window .titlebar{
+  color:var(--window-title-color);
+}
+
+.glitch-graphics-window .title-left span{
+  text-shadow:1px 0 #00d8e8,-1px 0 #ff2bd6;
+}
+
+.glitch-graphics-window .menu-item:hover{
+  color:var(--window-menu-accent-color);
+  background:var(--window-menu-accent);
+}
+
+.glitch-graphics-window .menu-dropdown div:hover{
+  color:var(--window-menu-accent-color);
+  background:var(--window-menu-accent);
+}
+
+.glitch-graphics-main{
+  position:relative;
+  padding:0;
+  overflow:hidden;
+  background:#08050e;
+  border-left:2px solid #271061;
+  border-bottom:2px solid #8a71ff;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.glitch-graphics-frame{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+  background:#050017;
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.glitch-graphics-frame-shield{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.14),
+    inset 0 0 26px rgba(93,41,217,.24);
+}
+
+.glitch-graphics-status{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  min-height:18px;
+  padding:2px 8px;
+  font-family:var(--font-window);
+  font-size:11px;
+  line-height:1;
+  color:#1b133c;
+  background:#cfc7ea;
+  border-top:2px solid #777;
+}
+
+.glitch-graphics-status b{
+  color:#4f22b8;
+  font-weight:700;
+}
+
+.glitch-graphics-window.collapsed .glitch-graphics-status{
+  display:none;
+}
+
+.glitch-graphics-window .context-item[aria-disabled="true"],
+.glitch-graphics-window .menu-dropdown [aria-disabled="true"]{
+  opacity:.42;
+  pointer-events:none;
+}

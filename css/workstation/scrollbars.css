@@ -1,0 +1,186 @@
+:root{
+  --ws-scroll-size:18px;
+  --ws-scroll-bg:#d4d0c8;
+  --ws-scroll-dark:#555;
+  --ws-scroll-mid:#808080;
+  --ws-scroll-light:#fff;
+}
+
+.scroll-x{
+  position:absolute;
+
+  left:0;
+  right:var(--ws-scroll-size);
+  bottom:0;
+
+  height:var(--ws-scroll-size);
+
+  background:var(--ws-scroll-bg);
+
+  border-top:1px solid var(--ws-scroll-mid);
+  border-left:1px solid var(--ws-scroll-mid);
+  border-right:1px solid var(--ws-scroll-light);
+  border-bottom:1px solid var(--ws-scroll-light);
+
+  overflow:hidden;
+
+  box-sizing:border-box;
+  z-index:20;
+}
+
+.scroll-y{
+  position:absolute;
+
+  top:0;
+  right:0;
+  bottom:var(--ws-scroll-size);
+
+  width:var(--ws-scroll-size);
+
+  background:var(--ws-scroll-bg);
+
+  border-top:1px solid var(--ws-scroll-mid);
+  border-left:1px solid var(--ws-scroll-mid);
+  border-right:1px solid var(--ws-scroll-light);
+  border-bottom:1px solid var(--ws-scroll-light);
+
+  overflow:hidden;
+
+  box-sizing:border-box;
+  z-index:20;
+}
+
+.scroll-corner{
+  position:absolute;
+
+  right:0;
+  bottom:0;
+
+  width:var(--ws-scroll-size);
+  height:var(--ws-scroll-size);
+
+  background:var(--ws-scroll-bg);
+
+  border-top:1px solid var(--ws-scroll-mid);
+  border-left:1px solid var(--ws-scroll-mid);
+  border-right:1px solid var(--ws-scroll-light);
+  border-bottom:1px solid var(--ws-scroll-light);
+
+  box-sizing:border-box;
+  z-index:25;
+}
+
+.scroll-x::before,
+.scroll-x::after,
+.scroll-y::before,
+.scroll-y::after{
+  content:"";
+
+  position:absolute;
+
+  background-color:var(--ws-scroll-bg);
+
+  border-top:2px solid var(--ws-scroll-light);
+  border-left:2px solid var(--ws-scroll-light);
+  border-right:2px solid var(--ws-scroll-dark);
+  border-bottom:2px solid var(--ws-scroll-dark);
+
+  background-repeat:no-repeat;
+  background-position:center;
+
+  box-sizing:border-box;
+  z-index:2;
+  pointer-events:none;
+}
+
+.scroll-x::before{
+  left:0;
+  top:0;
+
+  width:var(--ws-scroll-size);
+  height:100%;
+
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpolygon points='11,4 5,9 11,14' fill='black'/%3E%3C/svg%3E");
+}
+
+.scroll-x::after{
+  right:0;
+  top:0;
+
+  width:var(--ws-scroll-size);
+  height:100%;
+
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpolygon points='7,4 13,9 7,14' fill='black'/%3E%3C/svg%3E");
+}
+
+.scroll-y::before{
+  left:0;
+  top:0;
+
+  width:100%;
+  height:var(--ws-scroll-size);
+
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpolygon points='9,5 4,11 14,11' fill='black'/%3E%3C/svg%3E");
+}
+
+.scroll-y::after{
+  left:0;
+  bottom:0;
+
+  width:100%;
+  height:var(--ws-scroll-size);
+
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpolygon points='4,7 14,7 9,13' fill='black'/%3E%3C/svg%3E");
+}
+
+.scroll-x,
+.scroll-y{
+  cursor:default;
+}
+
+.scroll-x span,
+.scroll-y span{
+  cursor:grab;
+}
+
+.scroll-x span:active,
+.scroll-y span:active{
+  cursor:grabbing;
+}
+
+.scroll-x span,
+.scroll-y span{
+  position:absolute;
+
+  display:block;
+
+  background:var(--ws-scroll-bg);
+
+  border-top:2px solid var(--ws-scroll-light);
+  border-left:2px solid var(--ws-scroll-light);
+  border-right:2px solid var(--ws-scroll-dark);
+  border-bottom:2px solid var(--ws-scroll-dark);
+
+  box-sizing:border-box;
+  z-index:1;
+
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.28),
+    inset -1px -1px 0 rgba(0,0,0,.18);
+}
+
+.scroll-x span{
+  left:var(--ws-scroll-size);
+  top:0;
+
+  height:100%;
+  width:60px;
+}
+
+.scroll-y span{
+  left:0;
+  top:var(--ws-scroll-size);
+
+  width:100%;
+  height:60px;
+}

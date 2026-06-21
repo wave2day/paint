@@ -1,0 +1,237 @@
+.dialog-window{
+  position:absolute;
+  display:flex;
+  flex-direction:column;
+  overflow:visible;
+
+  width:max-content;
+  min-width:0;
+  min-height:0;
+
+  background:#c7c2bd;
+  padding:8px;
+
+  border-top:2px solid #fff;
+  border-left:2px solid #fff;
+  border-right:2px solid #555;
+  border-bottom:2px solid #555;
+
+  box-shadow:
+    inset 1px 1px 0 #dfdfdf,
+    inset -1px -1px 0 #808080,
+    8px 8px 0 rgba(0,0,0,.16);
+
+  isolation:isolate;
+  z-index:30;
+}
+
+.dialog-window.is-resizable{
+  min-width:260px;
+  min-height:190px;
+}
+
+.dialog-window[data-dialog-id="palette-builder"]{
+  height:700px;
+}
+
+.dialog-window[data-dialog-id^="folder-window-"]{
+  width:340px;
+  height:250px;
+  min-width:280px;
+  min-height:210px;
+  overflow:visible;
+}
+
+.dialog-window[data-dialog-id^="folder-window-"] .dialog-main,
+.dialog-window[data-dialog-id^="folder-window-"] .dialog-body{
+  width:auto;
+  min-width:0;
+}
+
+.dialog-window[data-dialog-id^="folder-window-"] .dialog-body{
+  display:flex;
+  flex-direction:column;
+}
+
+.dialog-window[data-dialog-id^="folder-window-"] .dialog-titlebar,
+.dialog-window[data-dialog-id="new-folder-dialog"] .dialog-titlebar{
+  background:
+    linear-gradient(
+      90deg,
+      #522cb7 0%,
+      #8d54f6 22%,
+      #bc87f9 52%,
+      #c89af6 76%,
+      #e3a4f3 100%
+    );
+  color:#fff8ff;
+  text-shadow:
+    0 1px 0 rgba(56,33,145,.7),
+    1px 1px 0 rgba(56,33,145,.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.72),
+    inset 0 -2px 0 rgba(82,44,183,.38);
+}
+
+.dialog-window[data-dialog-id^="folder-window-"] .dialog-titlebar::after,
+.dialog-window[data-dialog-id="new-folder-dialog"] .dialog-titlebar::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.22;
+  background-image:
+    linear-gradient(90deg,rgba(255,255,255,.45) 0 1px,transparent 1px 5px),
+    linear-gradient(180deg,rgba(255,255,255,.26) 0 1px,transparent 1px 4px);
+  mix-blend-mode:screen;
+}
+
+.dialog-window[data-dialog-id^="folder-window-"] .dialog-title,
+.dialog-window[data-dialog-id^="folder-window-"] .dialog-close,
+.dialog-window[data-dialog-id="new-folder-dialog"] .dialog-title,
+.dialog-window[data-dialog-id="new-folder-dialog"] .dialog-close{
+  position:relative;
+  z-index:1;
+}
+
+.dialog-window::after{
+  content:"";
+  position:absolute;
+  left:8px;
+  top:8px;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1;
+  opacity:.18;
+  background-image:
+    radial-gradient(rgba(0,0,0,.20) 0.35px,transparent 0.5px),
+    radial-gradient(rgba(0,0,0,.12) 0.25px,transparent 0.45px);
+  background-size:2px 2px,3px 3px;
+  background-position:0 0,1px 1px;
+  filter:blur(.2px);
+  mix-blend-mode:multiply;
+}
+
+.dialog-titlebar{
+  height:28px;
+  background:linear-gradient(90deg,#d789c9,#e9a9d5);
+  color:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 7px;
+
+  font-weight:bold;
+  font-size:16px;
+  cursor:move;
+
+  position:relative;
+  z-index:2;
+}
+
+.dialog-title{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.dialog-close{
+  width:16px;
+  height:16px;
+
+  background:#d7d2cc;
+  cursor:pointer;
+
+  border-top:2px solid #fff;
+  border-left:2px solid #fff;
+  border-right:2px solid #555;
+  border-bottom:2px solid #555;
+
+  position:relative;
+  padding:0;
+}
+
+.dialog-close:active{
+  border-top:2px solid #555;
+  border-left:2px solid #555;
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+}
+
+.dialog-close::before,
+.dialog-close::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:2px;
+  height:10px;
+  background:#111;
+  transform-origin:center;
+}
+
+.dialog-close::before{
+  transform:translate(-50%,-50%) rotate(45deg);
+}
+
+.dialog-close::after{
+  transform:translate(-50%,-50%) rotate(-45deg);
+}
+
+.dialog-main{
+  flex:1 1 auto;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  position:relative;
+
+  width:max-content;
+  min-width:max-content;
+  min-height:0;
+
+  background:#bdb8b3;
+
+  border-left:2px solid #777;
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+
+  z-index:2;
+}
+
+.dialog-body{
+  flex:1 1 auto;
+  overflow:hidden;
+
+  width:max-content;
+  min-width:max-content;
+  min-height:0;
+
+  background:#bdb8b3;
+}
+
+.dialog-window.is-resizable
+.dialog-main,
+.dialog-window.is-resizable
+.dialog-body{
+  width:auto;
+  min-width:0;
+}
+
+.dialog-resize-handle{
+  position:absolute;
+  right:0;
+  bottom:0;
+
+  width:20px;
+  height:20px;
+
+  cursor:nwse-resize;
+
+  z-index:4;
+
+  background:transparent;
+}

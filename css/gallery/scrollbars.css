@@ -1,0 +1,28 @@
+/* =========================
+   SCROLLBAR
+========================= */
+
+.gallery-grid::-webkit-scrollbar{
+
+  width:18px;
+
+}
+
+.gallery-grid::-webkit-scrollbar-track{
+
+  background:#c7c2bd;
+
+  border-left:2px solid #777;
+
+}
+
+.gallery-grid::-webkit-scrollbar-thumb{
+
+  background:#d7d2cc;
+
+  border-top:2px solid #fff;
+  border-left:2px solid #fff;
+  border-right:2px solid #555;
+  border-bottom:2px solid #555;
+
+}

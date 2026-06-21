@@ -1,0 +1,38 @@
+@font-face{
+  font-family:"M PLUS Rounded 1c";
+  font-style:normal;
+  font-weight:800;
+  font-display:swap;
+  src:url("../../assets/fonts/m-plus-rounded-1c/MPLUSRounded1c-ExtraBold.ttf") format("truetype");
+}
+
+:root{
+  --font-titlebar:"M PLUS Rounded 1c","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+  --font-window:"Chicago","Charcoal","Geneva","Lucida Grande",Arial,sans-serif;
+  --font-effect:"Monaco","Andale Mono","Lucida Console",monospace;
+  --font-context:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --font-desktop-icon:"M PLUS Rounded 1c","Arial Rounded MT Bold","Trebuchet MS",sans-serif;
+}
+
+body,
+button,
+input,
+select{
+  font-family:var(--font-window);
+}
+
+.titlebar,
+.dialog-titlebar{
+  font-family:var(--font-titlebar);
+}
+
+.menu,
+.menu-dropdown{
+  font-family:var(--font-window);
+}
+
+.context-menu,
+.context-submenu,
+.context-item{
+  font-family:var(--font-context);
+}

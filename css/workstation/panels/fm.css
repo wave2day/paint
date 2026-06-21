@@ -1,0 +1,355 @@
+/* FM 2.0 panel. */
+
+.fm-panel{
+  --effect-knob-size:38px;
+}
+
+.fm-section{
+  padding:8px;
+  background:#bdb8b3;
+  border-top:2px solid #777;
+  border-left:2px solid #777;
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+}
+
+.fm-core-knobs,
+.fm-line-knobs,
+.fm-motion-knobs,
+.fm-color-knobs{
+  margin:8px 0 6px;
+}
+
+.fm-core-knobs .value-knob,
+.fm-line-knobs .value-knob,
+.fm-motion-knobs .value-knob,
+.fm-color-knobs .value-knob{
+  width:100%;
+}
+
+.fm-line-knobs{
+  row-gap:10px;
+}
+
+.fm-blend-slider{
+  display:grid;
+  gap:var(--effect-select-label-gap);
+  min-width:0;
+  margin:8px 0 2px;
+}
+
+.fm-blend-slider label{
+  display:block;
+  margin:0;
+}
+
+.fm-blend-mode-button-wrap{
+  display:grid;
+  grid-template-columns:max-content max-content;
+  align-items:center;
+  justify-content:center;
+  column-gap:7px;
+  row-gap:3px;
+  margin-top:4px;
+}
+
+.fm-blend-mode-button-wrap--color{
+  align-self:center;
+  justify-self:center;
+  margin:0;
+}
+
+.fm-blend-mode-label{
+  grid-column:1 / -1;
+  justify-self:center;
+  font-family:var(--effect-font);
+  font-size:9px;
+  line-height:1;
+}
+
+.fm-blend-mode-button{
+  --round-button-size:24px;
+  --round-button-inset:4px;
+}
+
+.fm-blend-mode-button.active::before{
+  background:
+    radial-gradient(circle at 58% 38%, rgba(255,255,255,.72), transparent 34%),
+    linear-gradient(180deg,#dcd4ff 0%,#cfc8ff 54%,#bcb3f0 100%);
+}
+
+.fm-blend-mode-readout{
+  min-width:28px;
+  font-family:var(--effect-font);
+  font-size:9px;
+  line-height:1;
+  color:#111;
+}
+
+.value-fader-bank.fm-breakup-faders{
+  grid-template-columns:repeat(3, max-content);
+  justify-content:center;
+  justify-items:center;
+  column-gap:22px;
+  width:max-content;
+  margin:8px auto 6px;
+}
+
+.fm-duo-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(116px,1fr));
+  gap:var(--effect-section-gap);
+}
+
+.fm-motion-knobs{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  justify-items:center;
+}
+
+.fm-motion-knobs .value-knob{
+  width:100%;
+}
+
+.fm-source-field-row{
+  margin:8px 0 2px;
+}
+
+.fm-core-mode-cell{
+  display:grid;
+  align-items:center;
+  justify-items:center;
+  min-height:58px;
+}
+
+.fm-mode-switchers{
+  display:grid;
+  grid-template-columns:46px;
+  justify-content:center;
+  align-items:center;
+  margin:0;
+}
+
+.fm-mode-switcher-wrap{
+  display:grid;
+  justify-items:center;
+  margin:0;
+}
+
+.fm-line-switcher-wrap{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:start;
+  justify-content:stretch;
+  justify-items:center;
+  column-gap:6px;
+  width:100%;
+  margin:12px 0 2px;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.vertical-switcher.fm-mode-toggle{
+  margin:0;
+}
+
+.fm-line-tone-button-wrap{
+  display:grid;
+  grid-template-columns:max-content max-content;
+  align-items:center;
+  justify-content:start;
+  justify-self:center;
+  column-gap:7px;
+  row-gap:3px;
+  margin:0 0 0 8px;
+}
+
+.fm-line-tone-label{
+  grid-column:1 / -1;
+  justify-self:center;
+  font-family:var(--effect-font);
+  font-size:9px;
+  line-height:1;
+}
+
+.fm-line-tone-button{
+  --round-button-size:24px;
+  --round-button-inset:4px;
+}
+
+.fm-line-tone-button::before{
+  background:
+    radial-gradient(circle at 58% 38%, rgba(255,255,255,.82), transparent 34%),
+    linear-gradient(180deg,#f8f7f2 0%,#eeeae1 54%,#d6d0c5 100%);
+}
+
+.fm-line-tone-button.active::before{
+  background:
+    radial-gradient(circle at 58% 38%, rgba(255,255,255,.3), transparent 34%),
+    linear-gradient(180deg,#444 0%,#1c1c1c 54%,#050505 100%);
+}
+
+.fm-line-tone-readout{
+  min-width:28px;
+  font-family:var(--effect-font);
+  font-size:9px;
+  line-height:1;
+  color:#111;
+}
+
+.slide-switcher.fm-mode-switcher{
+  --slide-switcher-width:var(--effect-mini-cutout-width, 58px);
+  --slide-switcher-height:var(--effect-mini-switcher-cutout-height, 12px);
+  --slide-switcher-thumb-width:var(--effect-switcher-thumb-width, 24px);
+  --slide-switcher-thumb-height:var(--effect-switcher-thumb-height, 18px);
+  position:static;
+  z-index:1;
+  width:var(--effect-mini-cutout-width, 58px);
+  max-width:none;
+  margin:0;
+  transform:none;
+  gap:3px;
+}
+
+.fm-line-switcher-wrap > .fm-mode-switcher{
+  justify-self:center;
+  margin-left:0;
+}
+
+.fm-mode-switcher .slide-switcher__title{
+  justify-self:center;
+  margin-bottom:0;
+  font-size:9px;
+}
+
+.fm-mode-switcher .slide-switcher__shell{
+  width:var(--effect-mini-cutout-width, 58px);
+  height:var(--effect-mini-switcher-cutout-height, 12px);
+  padding:2px 3px;
+}
+
+.fm-mode-switcher .slide-switcher__marks{
+  width:58px;
+  margin-top:4px;
+  gap:2px;
+}
+
+.fm-mode-switcher .slide-switcher__mark{
+  gap:2px;
+}
+
+.fm-mode-switcher .slide-switcher__dot{
+  width:3px;
+  height:3px;
+}
+
+.fm-mode-switcher .slide-switcher__label{
+  font-size:8px;
+}
+
+.fm-source-knob{
+  display:grid;
+  width:auto;
+  justify-items:center;
+  margin:0;
+}
+
+.fm-source-knob::before,
+.fm-source-knob.value-knob--main::before,
+.fm-flow-mode-knob::before,
+.fm-flow-mode-knob.value-knob--main::before{
+  display:none;
+}
+
+.fm-source-knob .value-knob__markers{
+  display:block;
+}
+
+.fm-source-readout{
+  min-width:42px;
+  margin-top:3px;
+  padding:2px 5px;
+  color:#f5f5f0;
+  background:#151515;
+  border-top:2px solid #050505;
+  border-left:2px solid #050505;
+  border-right:2px solid #777;
+  border-bottom:2px solid #777;
+  text-align:center;
+  font-size:9px;
+  line-height:1;
+}
+
+.fm-flow-mode-knob .value-knob__markers{
+  display:block;
+}
+
+.fm-flow-readout{
+  min-width:34px;
+  margin-top:2px;
+  padding:2px 4px;
+  color:#f5f5f0;
+  background:#151515;
+  border-top:2px solid #050505;
+  border-left:2px solid #050505;
+  border-right:2px solid #777;
+  border-bottom:2px solid #777;
+  text-align:center;
+  font-size:8px;
+  line-height:1;
+}
+
+.fm-preset-section{
+  padding-top:6px;
+  padding-bottom:6px;
+}
+
+.fm-preset-label{
+  display:grid;
+  gap:var(--effect-select-label-gap);
+}
+
+.fm-preset-label select{
+  margin:0;
+}
+
+.fm-breakup-faders .value-fader{
+  --value-fader-height:86px;
+  --value-fader-width:9px;
+  --value-fader-handle-width:27px;
+  --value-fader-handle-height:16px;
+}
+
+.fm-breakup-faders .value-fader__slot::after{
+  right:-18px;
+  width:8px;
+  opacity:.72;
+}
+
+.fm-breakup-faders .value-fader__label{
+  margin-top:7px;
+}
+
+.fm-motion-knobs{
+  margin:6px 0 4px;
+  row-gap:8px;
+}
+
+@media (max-width:520px){
+  .fm-source-field-row{
+    grid-template-columns:max-content max-content;
+    column-gap:10px;
+  }
+
+  .fm-line-switcher-wrap{
+    column-gap:6px;
+    padding:0;
+  }
+
+  .fm-blend-slider{
+    width:100%;
+  }
+
+  .fm-blend-mode-button-wrap{
+    justify-content:center;
+  }
+}

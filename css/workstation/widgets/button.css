@@ -1,0 +1,188 @@
+/* Button widgets. */
+
+.effect-capsule-button{
+  --capsule-button-width:78px;
+  --capsule-button-height:23px;
+  --capsule-button-font-size:12px;
+  --capsule-button-inset-x:4px;
+  --capsule-button-inset-y:3px;
+
+  position:relative;
+  display:inline-grid;
+  place-items:center;
+  min-width:var(--capsule-button-width);
+  min-height:var(--capsule-button-height);
+  box-sizing:border-box;
+  padding:0 12px;
+  overflow:visible;
+
+  font-family:var(--effect-font);
+  font-size:var(--capsule-button-font-size);
+  line-height:1;
+  color:#1b1b1b;
+  text-align:center;
+
+  border:0;
+  border-radius:999px;
+  background:
+    linear-gradient(
+      180deg,
+      #aaa7a0 0%,
+      #b8b5ae 52%,
+      #d2cec6 100%
+    );
+
+  box-shadow:
+    inset 0 1px 1px rgba(0,0,0,.08),
+    inset 0 -1px 0 rgba(255,255,255,.42);
+
+  cursor:pointer;
+}
+
+.effect-capsule-button::before{
+  content:"";
+  position:absolute;
+  inset:
+    var(--capsule-button-inset-y)
+    var(--capsule-button-inset-x);
+  border-radius:999px;
+  border:1px solid rgba(18,18,18,.62);
+  background:
+    linear-gradient(180deg,#f4f1eb 0%,#eeeae4 54%,#ddd9d2 100%);
+  box-shadow:
+    0 -1px 0 rgba(255,255,255,.14),
+    0 1px 1px rgba(0,0,0,.42),
+    inset 0 1px 1px rgba(255,255,255,.78),
+    inset 0 -1px 1px rgba(0,0,0,.08);
+  pointer-events:none;
+}
+
+.effect-capsule-button:hover{
+  filter:brightness(1.035);
+}
+
+.effect-capsule-button:active{
+  box-shadow:
+    inset 0 1px 1px rgba(0,0,0,.08),
+    inset 0 -1px 1px rgba(255,255,255,.32);
+}
+
+.effect-capsule-button:active::before{
+  transform:translateY(.35px);
+  box-shadow:
+    0 -1px 1px rgba(0,0,0,.16),
+    0 1px 1px rgba(0,0,0,.18),
+    inset 0 1px 2px rgba(0,0,0,.16),
+    inset 0 -1px 1px rgba(255,255,255,.44);
+}
+
+.effect-capsule-button:focus-visible{
+  outline:0;
+  filter:brightness(1.025);
+}
+
+.effect-capsule-button--small{
+  --capsule-button-width:55px;
+  --capsule-button-height:21px;
+  --capsule-button-font-size:10px;
+  --capsule-button-inset-x:3px;
+  --capsule-button-inset-y:2px;
+  padding:0 9px;
+}
+
+.effect-capsule-button--seed{
+  --capsule-button-width:var(--effect-mini-cutout-width, 58px);
+  --capsule-button-height:var(--effect-mini-capsule-cutout-height, 16px);
+  --capsule-button-font-size:7px;
+  --capsule-button-inset-x:4px;
+  --capsule-button-inset-y:3px;
+  padding:0 6px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #918b83 0%,
+      #b6b0a7 30%,
+      #cbc5bc 64%,
+      #eee8de 100%
+    );
+  box-shadow:
+    inset 0 3px 4px rgba(47,42,36,.52),
+    inset 0 -1px 2px rgba(255,255,255,.42),
+    inset 2px 0 3px rgba(47,42,36,.18),
+    inset -2px 0 3px rgba(255,255,255,.12);
+}
+
+.effect-capsule-button--seed::before{
+  border-color:rgba(18,18,18,.5);
+  background:
+    linear-gradient(180deg,#f0ede7 0%,#ebe7df 54%,#d9d5ce 100%);
+  box-shadow:
+    0 1px 1px rgba(0,0,0,.36),
+    inset 0 1px 1px rgba(255,255,255,.62),
+    inset 0 -1px 1px rgba(0,0,0,.08);
+}
+
+.effect-capsule-button--seed:active{
+  transform:none;
+}
+
+.effect-round-button{
+  --round-button-size:var(--effect-round-cutout-size, 24px);
+  --round-button-inset:4px;
+
+  position:relative;
+  display:inline-grid;
+  place-items:center;
+  width:var(--round-button-size);
+  height:var(--round-button-size);
+  box-sizing:border-box;
+  padding:0;
+  overflow:visible;
+
+  border:0;
+  border-radius:50%;
+  background:
+    linear-gradient(
+      180deg,
+      #918b83 0%,
+      #b6b0a7 30%,
+      #cbc5bc 64%,
+      #eee8de 100%
+    );
+  box-shadow:
+    inset 0 3px 4px rgba(47,42,36,.52),
+    inset 0 -1px 2px rgba(255,255,255,.42),
+    inset 2px 0 3px rgba(47,42,36,.18),
+    inset -2px 0 3px rgba(255,255,255,.12);
+  cursor:pointer;
+}
+
+.effect-round-button::before{
+  content:"";
+  position:absolute;
+  inset:var(--round-button-inset);
+  border-radius:50%;
+  border:1px solid rgba(18,18,18,.5);
+  background:
+    radial-gradient(circle at 58% 38%, rgba(255,255,255,.7), transparent 34%),
+    linear-gradient(180deg,#f0ede7 0%,#ebe7df 54%,#d9d5ce 100%);
+  box-shadow:
+    0 1px 1px rgba(0,0,0,.36),
+    inset 0 1px 1px rgba(255,255,255,.62),
+    inset 0 -1px 1px rgba(0,0,0,.08);
+  pointer-events:none;
+}
+
+.effect-round-button:active::before{
+  transform:translateY(.35px);
+  box-shadow:
+    0 1px 1px rgba(0,0,0,.18),
+    inset 0 1px 2px rgba(0,0,0,.14),
+    inset 0 -1px 1px rgba(255,255,255,.42);
+}
+
+.effect-round-button:focus-visible{
+  outline:0;
+  filter:brightness(1.025);
+}

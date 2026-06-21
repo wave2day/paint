@@ -1,0 +1,132 @@
+/* =========================
+   WINDOW MENU
+========================= */
+
+.menu{
+
+  height:28px;
+
+  display:flex;
+  align-items:center;
+
+  position:relative;
+
+  flex-shrink:0;
+
+  padding-left:8px;
+
+}
+
+
+
+/* =========================
+   MENU ITEM
+========================= */
+
+.menu-item{
+
+  position:relative;
+
+  height:100%;
+
+  display:flex;
+  align-items:center;
+
+  padding:0 10px;
+
+  cursor:pointer;
+
+  user-select:none;
+
+}
+
+
+
+/* =========================
+   HOVER
+========================= */
+
+.menu-item:hover{
+
+  background:var(--window-menu-accent);
+  color:var(--window-menu-accent-color);
+
+}
+
+
+
+/* =========================
+   DROPDOWN
+========================= */
+
+.menu-dropdown{
+
+  position:absolute;
+
+  top:100%;
+  left:0;
+
+  min-width:180px;
+
+  display:none;
+
+  background:#c7c2bd;
+
+  color:#111;
+
+  z-index:9000;
+
+  border-top:2px solid #fff;
+  border-left:2px solid #fff;
+  border-right:2px solid #555;
+  border-bottom:2px solid #555;
+
+  box-shadow:
+    2px 2px 0 rgba(0,0,0,.25);
+
+}
+
+
+
+/* =========================
+   OPEN
+========================= */
+
+.menu-item:hover .menu-dropdown{
+
+  display:block;
+
+}
+
+
+
+/* =========================
+   DROPDOWN ITEM
+========================= */
+
+.menu-dropdown div{
+
+  padding:8px 12px;
+
+  white-space:nowrap;
+
+}
+
+
+
+/* =========================
+   DROPDOWN HOVER
+========================= */
+
+.menu-dropdown div:hover{
+
+  background:var(--window-menu-accent);
+  color:var(--window-menu-accent-color);
+
+}
+
+.menu-dropdown div[aria-disabled="true"]{
+  color:var(--muted);
+  opacity:.52;
+  pointer-events:none;
+}

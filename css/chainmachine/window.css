@@ -1,0 +1,29 @@
+/* =========================
+   CHAIN MACHINE
+========================= */
+
+.chainmachine .titlebar{
+
+}
+
+.chainmachine{
+  --window-title-start:#d789c9;
+  --window-title-mid:#e9a9d5;
+  --window-title-end:#85eaff;
+  --window-menu-accent:var(--window-title-start);
+  --window-menu-accent-color:#fff;
+}
+
+.chainmachine .main{
+
+  flex:1;
+
+  min-width:0;
+  min-height:0;
+
+  overflow:hidden;
+
+  position:relative;
+
+  background:#120d26;
+}

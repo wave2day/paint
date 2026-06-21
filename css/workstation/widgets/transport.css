@@ -1,0 +1,150 @@
+.transport{
+
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+
+  gap:8px;
+
+  width:100%;
+
+  padding:8px;
+
+  box-sizing:border-box;
+
+  background:#bdb8b3;
+
+  border-top:2px solid #777;
+  border-left:2px solid #777;
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+}
+
+.transport-btn{
+
+  position:relative;
+
+  height:42px;
+
+  box-sizing:border-box;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #eeeeee 0%,
+      #d8d8d8 54%,
+      #c4c4c4 100%
+    );
+
+  border-top:2px solid #fff;
+  border-left:2px solid #fff;
+  border-right:2px solid #555;
+  border-bottom:2px solid #555;
+
+  box-shadow:
+    inset 1px 1px 0 rgba(255,255,255,.75),
+    inset -1px -1px 0 rgba(60,60,60,.28);
+
+  cursor:pointer;
+}
+
+.transport-btn:hover{
+
+  filter:brightness(1.04);
+}
+
+.transport-btn:active{
+
+  border-top:2px solid #555;
+  border-left:2px solid #555;
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+
+  background:
+    linear-gradient(
+      180deg,
+      #c9c9c9 0%,
+      #e2e2e2 100%
+    );
+}
+
+.transport-btn::before{
+
+  content:"";
+
+  display:block;
+}
+
+.transport-btn.play::before{
+
+  width:0;
+  height:0;
+
+  margin-left:3px;
+
+  border-top:9px solid transparent;
+  border-bottom:9px solid transparent;
+  border-left:15px solid #151515;
+}
+
+.transport-btn.stop::before{
+
+  width:15px;
+  height:15px;
+
+  background:#151515;
+}
+
+.transport-btn.record::before{
+
+  width:17px;
+  height:17px;
+
+  background:#d50012;
+
+  border-radius:50%;
+
+  box-shadow:
+    inset 2px 2px 0 rgba(255,255,255,.32),
+    inset -2px -2px 0 rgba(70,0,0,.28);
+}
+
+.transport-btn.record.is-recording{
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffe2e2 0%,
+      #f7b8b8 100%
+    );
+}
+
+.transport-btn.record.is-recording::before{
+
+  background:#ff0018;
+
+  box-shadow:
+    0 0 0 3px rgba(255,0,24,.18),
+    inset 2px 2px 0 rgba(255,255,255,.38),
+    inset -2px -2px 0 rgba(70,0,0,.3);
+}
+
+.transport-label{
+
+  position:absolute;
+
+  width:1px;
+  height:1px;
+
+  overflow:hidden;
+
+  clip:rect(0 0 0 0);
+  clip-path:inset(50%);
+
+  white-space:nowrap;
+}

@@ -1,0 +1,413 @@
+/* Knob widgets.
+
+   Scale modes:
+   - default: bounded potentiometer arc, matching the 270deg value range
+   - *--full: full circular scale, only for controls that wrap endlessly
+   - value-knob--positions-4: discrete four-position selector markers
+*/
+
+.knob{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:var(--effect-knob-label-offset);
+  font-size:10px;
+}
+
+.knob::before,
+.rgb-mini-knob::before,
+.dither-mini-knob::before,
+.feedback-mini-knob::before{
+  content:"";
+
+  position:absolute;
+  top:-7px;
+  left:50%;
+
+  width:calc(var(--effect-knob-size) + 14px);
+  height:calc(var(--effect-knob-size) + 14px);
+
+  transform:translateX(-50%);
+
+  border-radius:50%;
+  background:
+    repeating-conic-gradient(
+      from -135deg,
+      var(--effect-knob-ticks) 0deg 2deg,
+      transparent 2deg 18deg
+    );
+
+  clip-path:polygon(
+    0 0,
+    100% 0,
+    100% 88%,
+    0 88%
+  );
+
+  opacity:.82;
+  pointer-events:none;
+}
+
+.dial,
+.rgb-dial,
+.dither-dial,
+.feedback-dial{
+  width:var(--effect-knob-size);
+  height:var(--effect-knob-size);
+
+  position:relative;
+  z-index:1;
+
+  border-radius:50%;
+  background:
+    radial-gradient(
+      circle at 36% 30%,
+      #555762,
+      var(--effect-knob-face) 48%,
+      var(--effect-knob-body) 72%
+    );
+
+  border:2px solid #111;
+
+  box-shadow:
+    inset 2px 2px 2px rgba(255,255,255,.12),
+    inset -3px -3px 4px rgba(0,0,0,.6),
+    0 2px 3px rgba(0,0,0,.35);
+}
+
+.rgb-dial{
+  border:3px solid var(--channel-color);
+}
+
+.dial::after,
+.rgb-dial::after,
+.dither-dial::after,
+.feedback-dial::after{
+  content:"";
+
+  position:absolute;
+  top:4px;
+  left:50%;
+
+  width:3px;
+  height:10px;
+
+  background:var(--effect-knob-indicator);
+
+  border-radius:2px;
+
+  transform:translateX(-50%);
+}
+
+.rgb-mini-knob,
+.dither-mini-knob,
+.feedback-mini-knob{
+  position:relative;
+  display:grid;
+  grid-template-rows:var(--effect-knob-size) auto;
+  align-items:center;
+  align-content:center;
+  justify-items:center;
+  min-width:0;
+  margin:0;
+  cursor:grab;
+  user-select:none;
+  touch-action:none;
+}
+
+.feedback-mini-knob.dragging{
+  cursor:grabbing;
+}
+
+.rgb-mini-knob span:last-of-type,
+.dither-mini-knob span:last-of-type,
+.feedback-mini-knob span:last-of-type{
+  margin-top:var(--effect-knob-label-offset);
+  line-height:var(--effect-knob-label-line);
+}
+
+.rgb-dial,
+.dither-dial,
+.feedback-dial{
+  transform:rotate(var(--turn, 0deg));
+}
+
+.dither-mini-knob input,
+.feedback-mini-knob input{
+  display:none;
+}
+
+.dither-mini-knob.dragging .dither-dial,
+.feedback-mini-knob.dragging .feedback-dial,
+.rgb-mini-knob.dragging .rgb-dial{
+  filter:brightness(1.08);
+}
+
+.value-knob-row{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  align-items:center;
+  gap:6px;
+  margin:10px 0 12px;
+}
+
+.value-knob-row--two{
+  grid-template-columns:repeat(2, 1fr);
+}
+
+.value-knob{
+  --value-knob-size:30px;
+  --value-knob-tick-size:44px;
+  --value-knob-tick-offset:-7px;
+
+  position:relative;
+  display:grid;
+  grid-template-rows:var(--value-knob-size) auto;
+  align-items:center;
+  align-content:center;
+  justify-items:center;
+  min-width:0;
+  margin:0;
+
+  cursor:ns-resize;
+  user-select:none;
+  touch-action:none;
+
+  font-family:var(--effect-font);
+  font-size:var(--effect-label-size);
+  line-height:var(--effect-label-line);
+}
+
+.value-knob--main{
+  --value-knob-size:52px;
+  --value-knob-tick-size:68px;
+  --value-knob-tick-offset:-8px;
+}
+
+.value-knob::before{
+  content:"";
+
+  position:absolute;
+  top:var(--value-knob-tick-offset);
+  left:50%;
+
+  width:var(--value-knob-tick-size);
+  height:var(--value-knob-tick-size);
+
+  transform:translateX(-50%);
+
+  border-radius:50%;
+  background:
+    repeating-conic-gradient(
+      from -135deg,
+      var(--effect-knob-ticks) 0deg 2deg,
+      transparent 2deg 18deg
+    );
+
+  clip-path:polygon(
+    0 0,
+    100% 0,
+    100% 88%,
+    0 88%
+  );
+
+  opacity:.78;
+  pointer-events:none;
+}
+
+.value-knob--main::before{
+  background:
+    repeating-conic-gradient(
+      from -135deg,
+      var(--effect-knob-ticks) 0deg 2deg,
+      transparent 2deg 12deg
+    );
+}
+
+.knob--full::before,
+.rgb-mini-knob--full::before,
+.dither-mini-knob--full::before,
+.feedback-mini-knob--full::before,
+.value-knob--full::before,
+.value-knob--circular::before{
+  clip-path:none;
+}
+
+.value-knob--positions-4::before,
+.dither-channel-knob::before{
+  top:var(--value-knob-tick-offset);
+  width:var(--value-knob-tick-size);
+  height:var(--value-knob-tick-size);
+  background:none;
+  clip-path:none;
+  opacity:.88;
+}
+
+.value-knob__markers{
+  --value-knob-dot-radius:calc(var(--value-knob-size) / 2 + 7px);
+  display:none;
+  position:absolute;
+  top:calc(var(--value-knob-size) / 2);
+  left:50%;
+  width:0;
+  height:0;
+  pointer-events:none;
+  z-index:0;
+}
+
+.value-knob--main .value-knob__markers{
+  --value-knob-dot-radius:calc(var(--value-knob-size) / 2 + 9px);
+}
+
+.value-knob--positions-4 .value-knob__markers,
+.dither-channel-knob .value-knob__markers,
+.dither-cell-knob .value-knob__markers{
+  display:block;
+}
+
+.value-knob__markers i{
+  position:absolute;
+  left:0;
+  top:0;
+  width:4px;
+  height:4px;
+  margin:-2px 0 0 -2px;
+  border-radius:50%;
+  background:var(--effect-knob-ticks);
+  box-shadow:0 0 3px rgba(255,255,255,.35);
+  transform:
+    rotate(var(--marker-angle))
+    translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.value-knob--positions-4 .value-knob__markers i:nth-child(1){
+  transform:rotate(0deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.value-knob--positions-4 .value-knob__markers i:nth-child(2){
+  transform:rotate(90deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.value-knob--positions-4 .value-knob__markers i:nth-child(3){
+  transform:rotate(180deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.value-knob--positions-4 .value-knob__markers i:nth-child(4){
+  transform:rotate(270deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.value-knob--positions-5 .value-knob__markers i:nth-child(1){
+  transform:rotate(0deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.value-knob--positions-5 .value-knob__markers i:nth-child(2){
+  transform:rotate(72deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.value-knob--positions-5 .value-knob__markers i:nth-child(3){
+  transform:rotate(144deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.value-knob--positions-5 .value-knob__markers i:nth-child(4){
+  transform:rotate(216deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.value-knob--positions-5 .value-knob__markers i:nth-child(5){
+  transform:rotate(288deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.fm-source-knob .value-knob__markers i:nth-child(1){
+  transform:rotate(0deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.fm-source-knob .value-knob__markers i:nth-child(2){
+  transform:rotate(60deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.fm-source-knob .value-knob__markers i:nth-child(3){
+  transform:rotate(120deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.fm-source-knob .value-knob__markers i:nth-child(4){
+  transform:rotate(180deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.fm-source-knob .value-knob__markers i:nth-child(5){
+  transform:rotate(240deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob--circular.fm-source-knob .value-knob__markers i:nth-child(6){
+  transform:rotate(300deg) translateY(calc(var(--value-knob-dot-radius) * -1));
+}
+
+.value-knob__dial{
+  position:relative;
+  z-index:1;
+
+  width:var(--value-knob-size);
+  height:var(--value-knob-size);
+
+  border-radius:50%;
+  border:2px solid #111;
+
+  background:
+    radial-gradient(
+      circle at 34% 28%,
+      #7b7c80 0,
+      #46484e 36%,
+      #202127 70%,
+      #111217 100%
+    );
+
+  box-shadow:
+    inset 2px 2px 2px rgba(255,255,255,.18),
+    inset -4px -4px 5px rgba(0,0,0,.64),
+    0 2px 3px rgba(0,0,0,.38);
+
+  transform:rotate(var(--value-knob-turn, -135deg));
+}
+
+.value-knob--main .value-knob__dial{
+  border-width:3px;
+  box-shadow:
+    inset 3px 3px 4px rgba(255,255,255,.24),
+    inset -5px -5px 7px rgba(0,0,0,.68),
+    0 3px 5px rgba(0,0,0,.45);
+}
+
+.value-knob__dial::after{
+  content:"";
+
+  position:absolute;
+  top:5px;
+  left:50%;
+
+  width:3px;
+  height:11px;
+
+  transform:translateX(-50%);
+
+  border-radius:2px;
+  background:var(--effect-knob-indicator);
+}
+
+.value-knob--main .value-knob__dial::after{
+  top:8px;
+  width:4px;
+  height:17px;
+}
+
+.value-knob__label{
+  margin-top:var(--effect-knob-label-offset);
+  line-height:var(--effect-knob-label-line);
+  text-align:center;
+}
+
+.value-knob__input{
+  display:none;
+}
+
+.value-knob.dragging .value-knob__dial{
+  filter:brightness(1.08);
+}

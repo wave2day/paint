@@ -1,0 +1,227 @@
+/* Shared indicator LEDs. */
+
+.status-led{
+  --status-led-rgb:242,18,24;
+  --status-led-lens:#3a0607;
+  --status-led-inner:#120304;
+  --status-led-core:rgba(var(--status-led-rgb), .12);
+  --status-led-hot:rgba(255,210,120, 0);
+  --status-led-star:rgba(255,235,125, 0);
+  --status-led-glass:.24;
+  --status-led-lens-glow:inset 0 0 0 rgba(var(--status-led-rgb), 0);
+  --status-led-panel-glow:0 0 0 rgba(var(--status-led-rgb), 0);
+  --status-led-yellow-glow:0 0 0 rgba(255,220,120, 0);
+
+  position:relative;
+  display:block;
+
+  width:13px;
+  height:13px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 50% 52%,
+      #050101 0 43%,
+      #1c1414 44% 58%,
+      #eee9df 61% 69%,
+      transparent 72% 100%
+    );
+
+  box-shadow:
+    inset 0 2px 3px rgba(0,0,0,.68),
+    0 1px 1px rgba(255,255,255,.34),
+    var(--status-led-panel-glow);
+
+  transition:
+    box-shadow 90ms ease,
+    filter 90ms ease;
+
+  pointer-events:none;
+}
+
+.status-led::before{
+  content:"";
+
+  position:absolute;
+  inset:2px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 53% 55%,
+      var(--status-led-hot) 0 7%,
+      transparent 8% 13%
+    ),
+    conic-gradient(
+      from 0deg at 53% 55%,
+      transparent 0deg 36deg,
+      var(--status-led-star) 37deg 42deg,
+      transparent 43deg 81deg,
+      var(--status-led-star) 82deg 88deg,
+      transparent 89deg 126deg,
+      var(--status-led-star) 127deg 132deg,
+      transparent 133deg 171deg,
+      var(--status-led-star) 172deg 178deg,
+      transparent 179deg 216deg,
+      var(--status-led-star) 217deg 222deg,
+      transparent 223deg 261deg,
+      var(--status-led-star) 262deg 268deg,
+      transparent 269deg 306deg,
+      var(--status-led-star) 307deg 312deg,
+      transparent 313deg 360deg
+    ),
+    radial-gradient(
+      circle at 53% 55%,
+      transparent 0 10%,
+      var(--status-led-core) 11% 29%,
+      var(--status-led-lens) 30% 65%,
+      #180303 78%,
+      var(--status-led-inner) 100%
+    );
+
+  box-shadow:
+    var(--status-led-yellow-glow),
+    var(--status-led-lens-glow),
+    inset 1px 1px 2px rgba(255,255,255,var(--status-led-glass)),
+    inset -2px -2px 3px rgba(0,0,0,.82),
+    0 1px 2px rgba(0,0,0,.58);
+}
+
+.status-led::after{
+  content:"";
+
+  position:absolute;
+  top:3px;
+  left:4px;
+
+  width:5px;
+  height:3px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.82),
+      rgba(255,255,255,.12) 70%,
+      transparent
+    );
+
+  transform:rotate(-24deg);
+  filter:blur(.12px);
+  opacity:var(--status-led-reflection, .38);
+}
+
+.status-led[data-state="off"]{
+  --status-led-lens:#300708;
+  --status-led-inner:#120304;
+  --status-led-core:rgba(var(--status-led-rgb), .08);
+  --status-led-hot:rgba(255,180,80, 0);
+  --status-led-glass:.18;
+  --status-led-reflection:.28;
+}
+
+.status-led[data-state="dim"],
+.status-led[data-state="fading"]{
+  --status-led-lens:#7e0e11;
+  --status-led-inner:#250405;
+  --status-led-core:rgba(var(--status-led-rgb), .62);
+  --status-led-hot:rgba(255,54,35, .2);
+  --status-led-star:rgba(255,235,125, 0);
+  --status-led-glass:.34;
+  --status-led-reflection:.42;
+  --status-led-lens-glow:
+    inset 0 0 3px rgba(var(--status-led-rgb), .62);
+  --status-led-panel-glow:
+    0 0 0 rgba(var(--status-led-rgb), 0);
+}
+
+.status-led[data-state="normal"]{
+  --status-led-lens:rgb(var(--status-led-rgb));
+  --status-led-inner:#3d0607;
+  --status-led-core:rgba(255,58,44, .92);
+  --status-led-hot:rgba(255,120,42, .5);
+  --status-led-star:rgba(255,235,125, 0);
+  --status-led-glass:.52;
+  --status-led-reflection:.62;
+  --status-led-lens-glow:
+    inset 0 0 5px rgba(var(--status-led-rgb), .92);
+  --status-led-panel-glow:
+    0 0 0 rgba(var(--status-led-rgb), 0);
+  --status-led-yellow-glow:
+    0 0 0 rgba(255,210,80, 0);
+}
+
+.status-led[data-state="bright"],
+.status-led[data-state="over"]{
+  --status-led-lens:#ff1d19;
+  --status-led-inner:#5c0305;
+  --status-led-core:rgba(255,64,36, 1);
+  --status-led-hot:rgba(255,246,130, 1);
+  --status-led-star:rgba(255,238,110, .96);
+  --status-led-glass:.7;
+  --status-led-reflection:.36;
+  --status-led-lens-glow:
+    inset 0 0 6px rgba(var(--status-led-rgb), .96);
+  --status-led-panel-glow:
+    0 0 16px rgba(var(--status-led-rgb), .48);
+  --status-led-yellow-glow:
+    0 0 7px rgba(255,238,110, .98),
+    0 0 12px rgba(255,178,42, .74);
+}
+
+.status-led.is-pulsing{
+  transform:none;
+}
+
+.status-led[data-state="dim"].is-pulsing,
+.status-led[data-state="fading"].is-pulsing{
+  --status-led-hot:rgba(255,62,38, .36);
+  --status-led-lens-glow:
+    inset 0 0 4px rgba(var(--status-led-rgb), .78);
+}
+
+.status-led[data-state="normal"].is-pulsing{
+  --status-led-hot:rgba(255,138,48, .68);
+  --status-led-star:rgba(255,235,125, 0);
+  --status-led-reflection:.58;
+  --status-led-lens-glow:
+    inset 0 0 6px rgba(var(--status-led-rgb), .96);
+  --status-led-panel-glow:
+    0 0 0 rgba(var(--status-led-rgb), 0);
+}
+
+.status-led[data-state="bright"].is-pulsing,
+.status-led[data-state="over"].is-pulsing{
+  --status-led-hot:rgba(255,248,150, 1);
+  --status-led-star:rgba(255,238,110, .98);
+  --status-led-reflection:.24;
+  --status-led-yellow-glow:
+    0 0 7px rgba(255,238,110, .95),
+    0 0 11px rgba(255,178,42, .68);
+  --status-led-panel-glow:
+    0 0 14px rgba(var(--status-led-rgb), .42);
+}
+
+.status-led:not([data-state="off"]).is-pulsing::before{
+  filter:brightness(1.22) saturate(1.16);
+}
+
+.status-led--red{
+  --status-led-rgb:242,18,24;
+}
+
+.status-led--green{
+  --status-led-rgb:32,230,53;
+}
+
+.status-led--blue{
+  --status-led-rgb:20,92,255;
+}
+
+.status-led--yellow{
+  --status-led-rgb:255,212,26;
+}

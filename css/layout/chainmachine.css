@@ -1,0 +1,14 @@
+.chainmachine{
+
+  left:720px;
+  top:130px;
+
+  width:920px;
+  height:620px;
+
+  z-index:1;
+
+  display:flex;
+  flex-direction:column;
+
+}

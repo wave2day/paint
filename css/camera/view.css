@@ -1,0 +1,29 @@
+.camera-view{
+  position:absolute;
+  inset:0;
+
+  display:grid;
+  grid-template-rows:
+    42px
+    220px
+    54px
+    305px
+    58px
+    54px
+    22px;
+
+  gap:7px;
+
+  padding:10px;
+
+  box-sizing:border-box;
+
+  color:#e7e3dc;
+
+  font-family:var(--font);
+}
+
+.camera-view--bend .camera-side,
+.camera-view--bend .camera-switches{
+  display:none;
+}

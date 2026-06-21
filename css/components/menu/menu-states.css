@@ -1,0 +1,71 @@
+.context-item:hover,
+.context-item.active{
+
+  margin-left:-1px;
+
+  margin-right:-1px;
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #dccbff 0%,
+      #c8afff 100%
+    );
+
+  border:1px solid #8d73d8;
+
+  border-radius:2px;
+
+  box-shadow:
+
+    inset 1px 1px 0 rgba(255,255,255,.52),
+
+    inset -1px -1px 0 rgba(74,52,130,.18);
+}
+
+
+
+.context-item:active{
+
+  background:
+
+    linear-gradient(
+      180deg,
+      #c8afff 0%,
+      #b699ff 100%
+    );
+
+  border-color:#7358c2;
+
+  transform:translate(1px,1px);
+}
+
+
+
+.context-item.checked::after{
+
+  content:"✓";
+
+  position:absolute;
+
+  right:10px;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  font-size:14px;
+}
+
+
+
+.context-item.is-disabled,
+.context-item:disabled{
+
+  color:var(--muted);
+
+  opacity:.52;
+
+  pointer-events:none;
+}

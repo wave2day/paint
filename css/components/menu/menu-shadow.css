@@ -1,0 +1,162 @@
+/* =========================================
+   menu-shadow.css
+========================================= */
+
+.context-menu,
+.context-submenu{
+
+  overflow:visible;
+
+  isolation:isolate;
+}
+
+
+
+/* =========================================
+   SHADOW LAYER
+========================================= */
+
+.menu-contact{
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:-10;
+
+  pointer-events:none;
+}
+
+
+
+/* =========================================
+   DARK SHADOW
+========================================= */
+
+.menu-contact::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  transform:
+    translate(3px,3px);
+
+  background:
+
+    linear-gradient(
+      135deg,
+
+      rgba(20,14,44,.44) 0%,
+
+      rgba(20,14,44,.38) 42%,
+
+      rgba(20,14,44,.24) 72%,
+
+      rgba(20,14,44,0) 100%
+    );
+
+  clip-path:polygon(
+
+    6px 0,
+
+    calc(100% - 6px) 0,
+
+    100% 6px,
+
+    100% calc(100% - 6px),
+
+    calc(100% - 6px) 100%,
+
+    6px 100%,
+
+    0 calc(100% - 6px),
+
+    0 6px
+  );
+}
+
+
+
+/* =========================================
+   LIGHT SECOND SHADOW
+========================================= */
+
+.menu-contact::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  transform:
+    translate(6px,6px);
+
+  background:
+
+    linear-gradient(
+      135deg,
+
+      rgba(147,128,199,.22) 0%,
+
+      rgba(147,128,199,.16) 48%,
+
+      rgba(147,128,199,.08) 76%,
+
+      rgba(147,128,199,0) 100%
+    );
+
+  clip-path:polygon(
+
+    6px 0,
+
+    calc(100% - 6px) 0,
+
+    100% 6px,
+
+    100% calc(100% - 6px),
+
+    calc(100% - 6px) 100%,
+
+    6px 100%,
+
+    0 calc(100% - 6px),
+
+    0 6px
+  );
+}
+
+
+
+/* =========================================
+   MAIN MENU
+========================================= */
+
+.context-menu > .menu-contact::before{
+
+  opacity:1;
+}
+
+.context-menu > .menu-contact::after{
+
+  opacity:1;
+}
+
+
+
+/* =========================================
+   SUBMENU
+========================================= */
+
+.context-submenu > .menu-contact::before{
+
+  opacity:.82;
+}
+
+.context-submenu > .menu-contact::after{
+
+  opacity:.78;
+}

@@ -1,0 +1,85 @@
+.chainmachine-view .preview-inner{
+
+  margin:10px;
+
+  height:210px;
+
+  border:2px solid #555;
+
+  background:
+    linear-gradient(90deg, rgba(255,0,180,.45), transparent 20%, rgba(0,255,255,.45) 38%, transparent 58%, rgba(255,255,0,.35)),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.3) 0 2px, transparent 2px 5px),
+    radial-gradient(circle at 45% 35%, #fef6ff, #6e1cff 38%, #05030a 72%);
+}
+
+
+
+.chainmachine-view .meters{
+
+  padding:10px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:8px;
+
+  font-size:12px;
+}
+
+
+
+.chainmachine-view .meter{
+
+  position:relative;
+
+  height:18px;
+
+  background:#222;
+
+  border:2px solid #777;
+}
+
+
+
+.chainmachine-view .meter::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  top:0;
+  bottom:0;
+
+  width:var(--v);
+
+  background:
+    linear-gradient(
+      90deg,
+      #00f0ff,
+      #ff00bf
+    );
+}
+
+
+
+.chainmachine-view .status{
+
+  position:absolute;
+
+  left:10px;
+  right:10px;
+  bottom:10px;
+
+  padding:6px;
+
+  font-size:12px;
+
+  background:#d7d2cc;
+
+  border-top:2px solid #fff;
+  border-left:2px solid #fff;
+
+  border-right:2px solid #555;
+  border-bottom:2px solid #555;
+}

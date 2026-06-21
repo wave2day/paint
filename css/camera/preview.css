@@ -1,0 +1,100 @@
+.camera-preview{
+  grid-row:2;
+
+  position:relative;
+
+  overflow:hidden;
+
+  padding:9px;
+
+  background:#1a1a1a;
+
+  border-radius:15px;
+
+  border-top:3px solid #101010;
+  border-left:3px solid #101010;
+  border-right:3px solid #b7b2aa;
+  border-bottom:3px solid #b7b2aa;
+
+  box-shadow:
+    inset 0 0 0 4px #050505,
+    inset 0 0 22px rgba(0,0,0,.85);
+}
+
+.camera-screen{
+  position:absolute;
+
+  inset:16px;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+    radial-gradient(circle at 27% 28%, rgba(255,255,255,.95), transparent 10%),
+    radial-gradient(circle at 68% 32%, rgba(255,0,255,.68), transparent 17%),
+    radial-gradient(circle at 43% 72%, rgba(120,255,0,.42), transparent 16%),
+    linear-gradient(110deg, #080808 0 22%, #ff4eff 24% 32%, #faf3ef 37% 43%, #16320d 50%, #ff44e8 70%, #050505 100%);
+
+  background-size:
+    100% 3px,
+    auto,
+    auto,
+    auto,
+    auto;
+
+  border:2px solid #050505;
+
+  box-shadow:
+    inset 0 0 36px rgba(0,0,0,.88),
+    inset 0 0 0 2px rgba(255,255,255,.05);
+}
+
+.camera-screen::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,.16) 0 2px,
+      transparent 2px 5px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 18px,
+      rgba(255,255,255,.09) 18px 20px,
+      transparent 20px 42px
+    );
+
+  mix-blend-mode:screen;
+
+  opacity:.85;
+}
+
+.camera-overlay,
+.camera-timecode{
+  position:absolute;
+  z-index:1;
+  bottom:10px;
+
+  color:var(--camera-green);
+
+  font-size:13px;
+  font-weight:700;
+
+  text-shadow:0 0 6px rgba(50,255,40,.7);
+}
+
+.camera-overlay{
+  left:12px;
+}
+
+.camera-timecode{
+  right:12px;
+
+  color:#efefef;
+
+  text-shadow:0 0 5px rgba(255,255,255,.45);
+}

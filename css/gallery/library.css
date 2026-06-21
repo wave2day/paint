@@ -1,0 +1,188 @@
+/* =========================
+   LIBRARY LAYOUT
+========================= */
+
+.gallery-library{
+
+  flex:1;
+
+  min-height:0;
+
+  display:grid;
+
+  grid-template-columns:190px minmax(0, 1fr);
+
+  gap:8px;
+
+  padding:8px;
+
+}
+
+.gallery-sidebar,
+.gallery-content,
+.gallery-inspector{
+
+  background:#d7d2cc;
+
+  border-top:2px solid #777;
+  border-left:2px solid #777;
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+
+  box-sizing:border-box;
+
+}
+
+.gallery-sidebar{
+
+  min-height:0;
+
+  padding:8px;
+
+  overflow:hidden;
+
+}
+
+.gallery-sidebar-title{
+
+  margin-bottom:8px;
+
+  font:700 12px/1 var(--font);
+
+  text-transform:uppercase;
+
+}
+
+.gallery-library-list{
+
+  display:grid;
+
+  gap:1px;
+
+}
+
+.library-node{
+
+  width:100%;
+  height:28px;
+
+  display:flex;
+  align-items:center;
+
+  gap:7px;
+
+  padding:0 8px;
+
+  border:0;
+
+  background:transparent;
+
+  color:#1b1b1b;
+
+  font:500 12px/1 var(--font);
+
+  text-align:left;
+
+  cursor:pointer;
+
+}
+
+.library-node:hover,
+.library-node.active{
+
+  background:var(--gallery-accent-soft);
+
+}
+
+.library-node[draggable="true"]{
+
+  cursor:grab;
+
+}
+
+.library-node[draggable="true"]:active{
+
+  cursor:grabbing;
+
+}
+
+.library-node.is-dragging{
+
+  opacity:.5;
+
+}
+
+.library-node.is-drop-before{
+
+  box-shadow:inset 0 2px 0 var(--gallery-accent);
+
+}
+
+.library-node.is-drop-after{
+
+  box-shadow:inset 0 -2px 0 var(--gallery-accent);
+
+}
+
+.library-node span{
+
+  width:14px;
+
+  text-align:center;
+
+}
+
+.gallery-sidebar-section{
+
+  margin:12px 0 6px;
+  padding-top:8px;
+
+  color:#1b1b1b;
+
+  border-top:1px solid #777;
+
+  box-shadow:0 -1px 0 #fff;
+
+  font:700 11px/1 var(--font);
+
+  text-transform:uppercase;
+
+}
+
+.library-child{
+
+  padding-left:18px;
+
+}
+
+.gallery-content{
+
+  min-width:0;
+  min-height:0;
+
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
+
+}
+
+.gallery-path{
+
+  flex-shrink:0;
+
+  height:30px;
+
+  display:flex;
+  align-items:center;
+
+  padding:0 10px;
+
+  color:#1b1b1b;
+
+  font:700 12px/1 var(--font);
+
+  border-bottom:2px solid #777;
+
+}
+

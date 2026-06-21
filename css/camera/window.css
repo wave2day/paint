@@ -1,0 +1,59 @@
+.camera{
+  --camera-purple:#3b00a8;
+  --camera-purple-dark:#1d0068;
+  --camera-panel:#8b8882;
+  --camera-metal:#6f6c66;
+  --camera-dark:#111;
+  --camera-green:#35ff2d;
+  --camera-cyan:#13e7ff;
+  --camera-violet:#bf52ff;
+  --camera-red:#ff3452;
+  --camera-yellow:#ffe100;
+  --camera-amber:#ff9f16;
+}
+
+.camera .titlebar{
+  height:28px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--camera-purple-dark),
+      var(--camera-purple) 58%,
+      #5f23d7
+    );
+
+  color:#fff;
+}
+
+.camera .menu{
+  display:none;
+}
+
+.camera .main{
+  overflow:hidden;
+
+  background:
+    radial-gradient(circle at 15% 8%, rgba(255,255,255,.2), transparent 16%),
+    linear-gradient(115deg, rgba(255,255,255,.08), transparent 34%),
+    var(--camera-metal);
+
+  border-top:2px solid #222;
+  border-left:2px solid #222;
+  border-right:2px solid #bfbab2;
+  border-bottom:2px solid #bfbab2;
+}
+
+.camera .window-bottom{
+  display:none;
+}
+
+.camera .resize-grip{
+  display:none;
+}
+
+.camera .maximize.is-disabled{
+  opacity:.45;
+  cursor:default;
+  filter:grayscale(1);
+}

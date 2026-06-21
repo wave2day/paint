@@ -1,0 +1,295 @@
+.ar-panel{
+  gap:var(--effect-section-gap);
+}
+
+.ar-section{
+  box-sizing:border-box;
+  padding:
+    var(--effect-section-padding-top)
+    var(--effect-section-padding-x)
+    var(--effect-section-padding-bottom);
+  background:var(--effect-panel-bg);
+  border-top:2px solid var(--effect-raised-dark);
+  border-left:2px solid var(--effect-raised-dark);
+  border-right:2px solid var(--effect-raised-light);
+  border-bottom:2px solid var(--effect-raised-light);
+}
+
+.ar-global-sliders{
+  margin:3px 0 4px;
+}
+
+.ar-codec-knobs,
+.ar-palette-knobs,
+.ar-packet-knobs,
+.ar-tv-knobs,
+.ar-motion-knobs{
+  margin:6px 0 8px;
+}
+
+.ar-packet-knobs{
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+}
+
+.ar-motion-knobs{
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+.ar-vhs-faders{
+  grid-template-columns:repeat(5, minmax(0, 1fr));
+  gap:7px;
+  margin:10px 0 8px;
+}
+
+.ar-vhs-faders .value-fader__label{
+  margin-top:7px;
+}
+
+.ar-vhs-event-knobs{
+  grid-template-columns:repeat(2, 38px);
+  justify-content:center;
+  justify-items:center;
+  column-gap:10px;
+  width:100%;
+  margin:6px auto 8px;
+}
+
+.ar-tv-knobs{
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+.ar-memory-hold.active::before,
+.ar-memory-hold.is-active::before{
+  background:
+    radial-gradient(circle at 58% 38%, rgba(255,255,255,.24), transparent 34%),
+    linear-gradient(180deg,#1d1d1b 0%,#33312d 54%,#141414 100%);
+  box-shadow:
+    0 1px 1px rgba(0,0,0,.36),
+    inset 0 1px 1px rgba(255,255,255,.18),
+    inset 0 -1px 1px rgba(0,0,0,.42);
+}
+
+.ar-memory-actions{
+  display:grid;
+  grid-template-columns:max-content max-content;
+  align-items:center;
+  justify-content:center;
+  column-gap:7px;
+  row-gap:3px;
+  margin:5px auto 0;
+  font-family:var(--effect-font);
+  font-size:9px;
+  line-height:1;
+}
+
+.ar-memory-hold-label{
+  grid-column:1 / -1;
+  justify-self:center;
+  white-space:nowrap;
+}
+
+.ar-memory-hold-readout{
+  justify-self:start;
+  min-width:28px;
+  box-sizing:border-box;
+  padding:2px 3px;
+  color:#151515;
+  background:rgba(245,241,232,.46);
+  border-top:1px solid rgba(255,255,255,.62);
+  border-left:1px solid rgba(255,255,255,.5);
+  border-right:1px solid rgba(70,68,64,.35);
+  border-bottom:1px solid rgba(70,68,64,.42);
+  font-size:9px;
+  font-weight:400;
+  line-height:1;
+  text-align:center;
+}
+
+.ar-memory-hold-readout.is-held{
+  color:#f4f1eb;
+  background:#151515;
+  border-color:#151515;
+}
+
+.ar-memory-layout{
+  display:grid;
+  grid-template-columns:82px 62px;
+  grid-template-areas:
+    "memory stack";
+  align-items:center;
+  justify-content:center;
+  column-gap:18px;
+  margin:5px auto 3px;
+}
+
+.ar-memory-main{
+  grid-area:memory;
+  display:grid;
+  justify-items:center;
+  min-width:0;
+}
+
+.ar-memory-main .ar-memory-main-knob.value-knob{
+  --value-knob-size:46px;
+  --value-knob-tick-size:62px;
+  --value-knob-tick-offset:-8px;
+  font-size:8px;
+}
+
+.ar-memory-small-stack{
+  grid-area:stack;
+  display:grid;
+  grid-template-rows:repeat(3, auto);
+  row-gap:6px;
+  align-items:center;
+  justify-items:center;
+  min-width:0;
+}
+
+.ar-memory-small-stack .value-knob{
+  justify-self:center;
+}
+
+.ar-memory-small-stack .ar-value-knob.value-knob{
+  --value-knob-size:23px;
+  --value-knob-tick-size:34px;
+  --value-knob-tick-offset:-5px;
+  font-size:7px;
+}
+
+.ar-section label.select-label{
+  gap:var(--effect-select-label-gap);
+  margin-bottom:var(--effect-select-label-gap);
+  font-family:var(--effect-font);
+  font-size:var(--effect-select-label-size);
+  line-height:1.05;
+}
+
+.effect-block-floating.ar-section label.select-label{
+  font-family:var(--effect-font);
+  font-size:var(--effect-select-label-size);
+  line-height:1.05;
+}
+
+.ar-section select{
+  width:100%;
+  height:18px;
+  min-height:18px;
+  box-sizing:border-box;
+  padding:1px 18px 1px 6px;
+  margin:var(--effect-select-label-gap) 0 6px;
+  font-family:var(--effect-font);
+  font-size:var(--effect-select-font-size);
+  line-height:1;
+  color:#111;
+  appearance:none;
+  -webkit-appearance:none;
+  background:
+    linear-gradient(45deg, transparent 50%, #111 50%)
+    calc(100% - 10px) 6px / 5px 5px no-repeat,
+    linear-gradient(135deg, #111 50%, transparent 50%)
+    calc(100% - 6px) 6px / 5px 5px no-repeat,
+    linear-gradient(180deg, #e5e1da, var(--effect-control-bg));
+  border-top:2px solid var(--effect-raised-dark);
+  border-left:2px solid var(--effect-raised-dark);
+  border-right:2px solid var(--effect-raised-light);
+  border-bottom:2px solid var(--effect-raised-light);
+}
+
+.ar-section[data-effect-block="ar-global"] > label.select-label{
+  margin-top:1px;
+  margin-bottom:1px;
+}
+
+.ar-section[data-effect-block="ar-global"] select{
+  margin-top:1px;
+  margin-bottom:4px;
+}
+
+.ar-section[data-effect-block="ar-global"] input[type="range"]{
+  margin-top:2px;
+  margin-bottom:4px;
+}
+
+.ar-section input[type="range"]{
+  margin-top:3px;
+  margin-bottom:7px;
+}
+
+.ar-value-knob{
+  font-size:9px;
+}
+
+.ar-value-knob.value-knob{
+  --value-knob-size:30px;
+  --value-knob-tick-size:44px;
+  --value-knob-tick-offset:-7px;
+}
+
+.ar-value-knob .value-knob__label{
+  margin-top:var(--effect-knob-label-offset);
+  font-size:9px;
+  line-height:1.05;
+  white-space:nowrap;
+}
+
+.ar-seed-row{
+  display:grid;
+  grid-template-columns:auto 40px var(--effect-mini-cutout-width, 58px);
+  grid-template-areas:
+    "label value button";
+  align-items:center;
+  justify-content:center;
+  column-gap:4px;
+  width:max-content;
+  max-width:100%;
+  margin:5px auto 3px;
+  font-family:var(--effect-font);
+  font-size:7px;
+  line-height:1;
+}
+
+.ar-panel .panel-buttons{
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+}
+
+.ar-panel .panel-buttons button{
+  min-width:0;
+  padding-left:3px;
+  padding-right:3px;
+  font-size:10px;
+  white-space:nowrap;
+}
+
+.ar-seed-readout{
+  display:contents;
+}
+
+.ar-seed-readout i{
+  grid-area:label;
+  justify-self:end;
+  font-size:7px;
+  line-height:1;
+  font-style:normal;
+  color:#151515;
+}
+
+.ar-seed-readout b{
+  grid-area:value;
+  justify-self:end;
+  min-width:40px;
+  box-sizing:border-box;
+  padding:2px 4px;
+  color:#f3efe8;
+  background:#151515;
+  font-weight:400;
+  font-size:8px;
+  line-height:1;
+  text-align:center;
+}
+
+.ar-seed-row .effect-capsule-button--seed{
+  grid-area:button;
+  justify-self:start;
+  align-self:center;
+}

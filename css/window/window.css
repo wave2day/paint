@@ -1,0 +1,295 @@
+/* =========================
+   WINDOW
+========================= */
+
+.window{
+
+--window-title-start:#d789c9;
+--window-title-mid:#e9a9d5;
+--window-title-end:#e9a9d5;
+--window-title-color:#fff;
+--window-menu-accent:var(--window-title-start);
+--window-menu-accent-color:var(--window-title-color);
+--window-collapsed-width:320px;
+
+position:absolute;
+
+display:flex;
+flex-direction:column;
+
+overflow:visible;
+
+min-width:320px;
+min-height:240px;
+
+background:#c7c2bd;
+
+padding:8px;
+
+border-top:2px solid #fff;
+border-left:2px solid #fff;
+
+border-right:2px solid #555;
+border-bottom:2px solid #555;
+
+/* BASE SHADOW */
+box-shadow:
+inset 1px 1px 0 #dfdfdf,
+inset -1px -1px 0 #808080,
+8px 8px 0 rgba(0,0,0,.16);
+
+/* REQUIRED */
+isolation:isolate;
+
+}
+
+
+
+/* =========================
+   MICRO DITHER OVERLAY
+========================= */
+
+.window::after{
+
+content:"";
+
+position:absolute;
+
+left:8px;
+top:8px;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+/* IMPORTANT */
+z-index:1;
+
+/* VERY SUBTLE */
+opacity:.18;
+
+/* FINE MICRO DITHER */
+background-image:
+
+radial-gradient(
+rgba(0,0,0,.20) 0.35px,
+transparent 0.5px
+),
+
+radial-gradient(
+rgba(0,0,0,.12) 0.25px,
+transparent 0.45px
+);
+
+/* VERY SMALL DETAIL */
+background-size:
+2px 2px,
+3px 3px;
+
+background-position:
+0 0,
+1px 1px;
+
+/* SOFTEN */
+filter:blur(.2px);
+
+mix-blend-mode:multiply;
+
+}
+
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+
+flex:1;
+
+min-width:0;
+min-height:0;
+
+display:flex;
+flex-direction:column;
+
+overflow:hidden;
+
+position:relative;
+
+background:#bdb8b3;
+
+border-top:none;
+
+border-left:2px solid #777;
+
+border-right:2px solid #fff;
+border-bottom:2px solid #fff;
+
+}
+
+
+
+/* =========================
+   MENU
+========================= */
+
+.menu{
+
+flex-shrink:0;
+
+}
+
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+.window-bottom{
+
+height:24px;
+
+margin-top:6px;
+
+background:#c7c2bd;
+
+position:relative;
+
+}
+
+
+
+/* =========================
+   RESIZE GRIP
+========================= */
+
+.resize-grip{
+
+position:absolute;
+
+right:0px;
+bottom:0px;
+
+width:24px;
+height:24px;
+
+overflow:hidden;
+
+cursor:nwse-resize;
+
+}
+
+
+
+/* =========================
+   PIXELS
+========================= */
+
+.pixel{
+
+position:absolute;
+
+width:2px;
+height:2px;
+
+image-rendering:pixelated;
+
+}
+
+
+
+.white{
+
+background:
+linear-gradient(
+to bottom right,
+#fff 0%,
+#fff 46%,
+#ececec 46%,
+#dfdfdf 72%,
+#cfcfcf 100%
+);
+
+}
+
+
+
+.dark-main{
+
+background:
+linear-gradient(
+to bottom right,
+#a3a3a3 0%,
+#979797 46%,
+#868686 46%,
+#787878 72%,
+#6c6c6c 100%
+);
+
+}
+
+
+
+.dark-flat{
+
+background:#7a7a7a;
+
+}
+
+
+
+/* =========================
+   COLLAPSED
+========================= */
+
+.window.collapsed .menu,
+.window.collapsed .main,
+.window.collapsed .window-bottom{
+
+display:none;
+
+}
+
+
+
+.window.collapsed{
+
+width:var(--window-collapsed-width) !important;
+
+height:auto !important;
+
+min-width:0 !important;
+min-height:0 !important;
+
+}
+
+
+
+/* =========================
+   MAXIMIZED
+========================= */
+
+.window.maximized{
+
+margin:0 !important;
+
+}
+
+
+
+/* =========================
+   BODY
+========================= */
+
+.window-body{
+
+flex:1;
+
+min-width:0;
+min-height:0;
+
+overflow:auto;
+
+}

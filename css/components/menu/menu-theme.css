@@ -1,0 +1,36 @@
+:root{
+
+  --bg:#dcd8ff;
+
+  --surface:#ecebff;
+
+  --surface-top:#f7f5ff;
+
+  --surface-hover:#dccbff;
+
+  --surface-pressed:#c5adff;
+
+  --outline:#1c1833;
+
+  --outline-soft:#7b69b4;
+
+  --shadow-contact:rgba(18,12,42,.52);
+
+  --shadow-1:rgba(92,73,168,.26);
+
+  --shadow-2:rgba(147,128,199,.14);
+
+  --shadow-3:rgba(147,128,199,.05);
+
+  --text:#1c1833;
+
+  --muted:#7a739a;
+
+  --grid:8px;
+
+  --cut:4px;
+
+  --inner-cut:3px;
+
+  --font:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}

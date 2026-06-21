@@ -1,0 +1,117 @@
+/* RGB effect panel. */
+
+.rgb-knob-row{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:6px;
+  margin:6px 0 10px;
+}
+
+.rgb-mini-knob.red{
+  --channel-color:#ff1f1f;
+}
+
+.rgb-mini-knob.green{
+  --channel-color:#21d646;
+}
+
+.rgb-mini-knob.blue{
+  --channel-color:#3048ff;
+}
+
+.rgb-mini-knob input[type="range"]{
+  display:none;
+}
+
+.rgb-select-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  margin-top:12px;
+  padding-top:4px;
+}
+
+.rgb-select-grid label{
+  display:flex;
+  flex-direction:column;
+  gap:var(--effect-select-label-gap);
+}
+
+.rgb-select-grid select{
+  margin-bottom:0;
+}
+
+
+.rgb-fringe-stack{
+  display:grid;
+  justify-items:center;
+  margin:8px 0 14px;
+  row-gap:8px;
+}
+
+.rgb-mode-switcher-wrap{
+  display:grid;
+  justify-items:center;
+  margin-top:0;
+}
+
+.slide-switcher.rgb-mode-switcher{
+  --slide-switcher-width:var(--effect-mini-cutout-width, 58px);
+  --slide-switcher-height:var(--effect-mini-switcher-cutout-height, 12px);
+  --slide-switcher-thumb-width:var(--effect-switcher-thumb-width, 24px);
+  --slide-switcher-thumb-height:var(--effect-switcher-thumb-height, 18px);
+  position:static;
+  z-index:1;
+  width:var(--effect-mini-cutout-width, 58px);
+  max-width:none;
+  margin:7px 0 0;
+  transform:none;
+  gap:3px;
+}
+
+.rgb-mode-switcher .slide-switcher__title{
+  justify-self:center;
+  margin-bottom:0;
+  font-size:7px;
+}
+
+.rgb-mode-switcher .slide-switcher__shell{
+  width:var(--effect-mini-cutout-width, 58px);
+  height:var(--effect-mini-switcher-cutout-height, 12px);
+  padding:2px 3px;
+}
+
+.rgb-mode-switcher .slide-switcher__marks{
+  width:58px;
+  margin-top:4px;
+  gap:2px;
+}
+
+.rgb-mode-switcher .slide-switcher__mark{
+  gap:2px;
+}
+
+.rgb-mode-switcher .slide-switcher__dot{
+  width:3px;
+  height:3px;
+}
+
+.rgb-mode-switcher .slide-switcher__label{
+  font-size:7px;
+}
+
+.rgb-primary-knobs{
+  margin:4px 0 10px;
+}
+
+.rgb-primary-knobs .value-knob{
+  width:100%;
+}
+
+.rgb-angle-knob::before{
+  display:none;
+}
+
+.rgb-fringe-knob{
+  width:auto;
+}

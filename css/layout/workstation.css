@@ -1,0 +1,15 @@
+.workstation{
+
+left:100px;
+top:70px;
+
+width:980px;
+height:680px;
+
+/* WORKSTATION ONLY */
+--window-min-height:420px;
+--effect-controls-min-height:260px;
+
+z-index:2;
+
+}

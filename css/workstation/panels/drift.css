@@ -1,0 +1,165 @@
+.drift-panel{
+  min-height:0;
+}
+
+.drift-layout{
+  display:flex;
+  flex-direction:column;
+  gap:var(--effect-section-gap);
+  min-height:0;
+}
+
+.drift-box{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.drift-box .slide-switcher{
+  margin:1px 0 3px;
+}
+
+.drift-loop-row{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  margin:1px 0 3px;
+  align-items:center;
+}
+
+.drift-loop-row .slide-switcher{
+  align-self:center;
+}
+
+.drift-transport-controls{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) minmax(54px, 0.62fr);
+  gap:10px;
+  align-items:start;
+  margin:4px 0 4px;
+}
+
+.drift-speed-stack{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  min-width:0;
+}
+
+.drift-phase-fader{
+  justify-content:center;
+  align-items:end;
+  margin:6px 0 0;
+}
+
+.drift-phase-fader .value-fader{
+  --value-fader-height:72px;
+
+  padding-bottom:24px;
+}
+
+.drift-phase-fader .value-fader__label{
+  position:absolute;
+  top:calc(var(--value-fader-height) + 5px);
+  left:50%;
+  transform:translateX(-50%);
+  font-size:9px;
+  line-height:1.05;
+  white-space:nowrap;
+}
+
+.drift-phase-fader .value-fader--drift-phase .value-fader__handle{
+  border-top-color:#ffb8be;
+  border-left-color:#ffb8be;
+  border-right-color:#8b101d;
+  border-bottom-color:#8b101d;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0 43%,
+      rgba(255,255,255,.62) 43% 47%,
+      #fff 47% 58%,
+      rgba(120,0,12,.18) 58% 61%,
+      transparent 61% 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.42),
+      transparent 36% 64%,
+      rgba(95,0,12,.18)
+    ),
+    linear-gradient(
+      145deg,
+      #ef5661,
+      #c91528 60%,
+      #9c0f1f
+    );
+
+  box-shadow:
+    0 1px 3px rgba(0,0,0,.3),
+    0 1px 0 rgba(255,255,255,.32),
+    inset 1px 1px 1px rgba(255,255,255,.44),
+    inset -1px -1px 1px rgba(90,0,12,.5);
+}
+
+.drift-main-knobs{
+  margin:4px 0 4px;
+}
+
+.drift-bias-faders{
+  margin:9px 0 7px;
+}
+
+.drift-slider-stack{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  margin:6px 0 8px;
+}
+
+.drift-range-control{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  margin:2px 0 6px;
+}
+
+.drift-range-control label{
+  align-self:flex-start;
+  margin:0;
+  font-family:var(--effect-font);
+  font-size:var(--effect-label-size);
+  line-height:var(--effect-label-line);
+  letter-spacing:0;
+}
+
+.drift-range-control input[type="range"]{
+  margin-top:0;
+}
+
+.drift-box select{
+  width:100%;
+}
+
+.drift-box .select-label{
+  font-family:var(--effect-font);
+  font-size:var(--effect-select-label-size);
+  line-height:1.05;
+}
+
+.drift-keyframe-count{
+  float:right;
+  opacity:.68;
+  font-size:inherit;
+}
+
+.drift-box .value-knob__label,
+.drift-box .value-fader__label{
+  font-size:var(--effect-select-label-size);
+}
+
+.drift-actions{
+  margin-top:2px;
+}

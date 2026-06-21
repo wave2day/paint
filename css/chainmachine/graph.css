@@ -1,0 +1,197 @@
+/* =========================
+   GRAPH
+========================= */
+
+.chainmachine-view .graph{
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:#120d26;
+}
+
+
+
+/* =========================
+   GRAPH GRID
+========================= */
+
+.chainmachine-view .graph::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+
+    linear-gradient(
+      rgba(255,255,255,.14) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.12) 1px,
+      transparent 1px
+    ),
+
+    radial-gradient(
+      circle at 70% 35%,
+      rgba(255,0,180,.22),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      circle at 42% 30%,
+      rgba(0,240,255,.18),
+      transparent 34%
+    ),
+
+    #120d26;
+
+  background-size:
+    56px 56px,
+    56px 56px,
+    auto,
+    auto,
+    auto;
+
+  opacity:.95;
+
+  pointer-events:none;
+}
+
+
+
+.chainmachine-view .wires{
+
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+  height:100%;
+}
+
+
+
+.chainmachine-view .node{
+
+  position:absolute;
+
+  width:145px;
+
+  min-height:78px;
+
+  background:#d7d2cc;
+
+  border-top:2px solid #fff;
+  border-left:2px solid #fff;
+
+  border-right:2px solid #555;
+  border-bottom:2px solid #555;
+
+  box-shadow:
+    5px 5px 0 rgba(0,0,0,.32);
+
+  font-size:12px;
+}
+
+
+
+.chainmachine-view .head{
+
+  height:22px;
+
+  color:#fff;
+
+  padding:4px 6px;
+
+  font-weight:bold;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff4fc7,
+      #00d9ff
+    );
+}
+
+
+
+.chainmachine-view .body{
+
+  padding:7px;
+
+  line-height:1.4;
+}
+
+
+
+.chainmachine-view .port{
+
+  width:12px;
+  height:12px;
+
+  border-radius:50%;
+
+  position:absolute;
+
+  border:2px solid #111;
+}
+
+
+
+.chainmachine-view .in{
+
+  left:-8px;
+  top:40px;
+
+  background:#00f0ff;
+}
+
+
+
+.chainmachine-view .out{
+
+  right:-8px;
+  top:40px;
+
+  background:#ff00bf;
+}
+
+
+
+.chainmachine-view .n1{
+
+  left:55px;
+  top:72px;
+}
+
+
+
+.chainmachine-view .n2{
+
+  left:285px;
+  top:126px;
+}
+
+
+
+.chainmachine-view .n3{
+
+  left:180px;
+  top:300px;
+}
+
+
+
+.chainmachine-view .n4{
+
+  left:465px;
+  top:248px;
+}
+
