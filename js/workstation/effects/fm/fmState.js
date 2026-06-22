@@ -1,0 +1,33 @@
+export const fmState = {
+
+  freq: 0.02,
+  depth: 25,
+  angle: 0,
+  smooth: 1,
+  threshold: 128,
+  lineWidth: 50,
+  contourDensity: 0,
+  dotBreakup: 0,
+  noiseAmount: 0,
+  signalTear: 0,
+  fmMode: "classic",
+  lineMode: "solid",
+  linePolarity: "light",
+  flow: 0,
+  flowMode: "vertical",
+  warp: 0,
+  blend: 1,
+  blendMode: "full",
+  colorize: 0,
+  colorSpread: 0,
+  glow: 0,
+  phaseDrift: 0,
+  motionAmount: 100,
+  motionProgress: 0,
+  motionVelocity: 0,
+  sourceMode: "luminance",
+  presetName: "Classic",
+  paletteColor: "#ff00ff",
+  bypass: false
+
+};
