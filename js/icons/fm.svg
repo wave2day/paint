@@ -1,0 +1,11 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+
+  <g transform="translate(163, 0)">
+    <circle cx="87" cy="250" r="163" stroke="black" stroke-width="8" fill="none"></circle>
+    <circle cx="107" cy="250" r="143" stroke="black" stroke-width="8" fill="none"></circle>
+    <circle cx="127" cy="250" r="123" stroke="black" stroke-width="8" fill="none"></circle>
+    <circle cx="147" cy="250" r="103" stroke="black" stroke-width="8" fill="none"></circle>
+    <circle cx="167" cy="250" r="83" stroke="black" stroke-width="8" fill="none"></circle>
+  </g>
+
+</svg>
